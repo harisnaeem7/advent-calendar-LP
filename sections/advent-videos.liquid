@@ -42,7 +42,7 @@
           <p class="adv-videos__text">{{ section.settings.videos_text }}</p>
         {%- endif -%}
       </div>
-      <div class="adv-videos__track">
+      <div class="adv-videos__track" data-drag-scroll>
         {%- for block in videos -%}
           {%- liquid
             assign r3 = forloop.index0 | modulo: 3

@@ -162,3 +162,39 @@ if (!customElements.get('advent-calendar')) {
   }
   customElements.define('advent-calendar', AdventCalendar);
 }
+
+/* Swipe rows (reviews, videos) already scroll with a finger. This lets a mouse drag them too,
+   e.g. when the phone layout is viewed in a narrow desktop window. */
+if (!window.advDragScroll) {
+  window.advDragScroll = true;
+  document.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    const row = e.target.closest('[data-drag-scroll]');
+    if (!row || row.scrollWidth <= row.clientWidth) return;
+    e.preventDefault();
+    const startX = e.clientX;
+    const startLeft = row.scrollLeft;
+    let moved = false;
+
+    const move = (ev) => {
+      const dx = ev.clientX - startX;
+      if (!moved && Math.abs(dx) > 4) {
+        moved = true;
+        row.classList.add('is-dragging');
+      }
+      if (moved) row.scrollLeft = startLeft - dx;
+    };
+    const up = () => {
+      document.removeEventListener('pointermove', move);
+      document.removeEventListener('pointerup', up);
+      if (!moved) return;
+      row.classList.remove('is-dragging');
+      // a drag shouldn't also count as a click on a card (e.g. play a video)
+      const stop = (c) => { c.preventDefault(); c.stopPropagation(); };
+      row.addEventListener('click', stop, { capture: true, once: true });
+      setTimeout(() => row.removeEventListener('click', stop, { capture: true }), 0);
+    };
+    document.addEventListener('pointermove', move);
+    document.addEventListener('pointerup', up);
+  });
+}

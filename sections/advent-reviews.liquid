@@ -35,7 +35,7 @@
       </div>
 
       {%- if section.blocks.size > 0 -%}
-        <ul class="adv-quotes" role="list">
+        <ul class="adv-quotes" role="list" data-drag-scroll>
           {%- for block in section.blocks -%}
             <li class="adv-quote{% if block.settings.featured %} adv-quote--featured{% endif %}" {{ block.shopify_attributes }}>
               <figure class="adv-quote__inner">

@@ -7,5 +7,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {{ 'advent-calendar.css' | asset_url | stylesheet_tag: preload: true }}
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Pinyon+Script&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+{%- comment -%}
+  Headings (Cormorant Garamond, Pinyon Script) use display=block: they wait briefly for the real font
+  instead of showing a different-looking fallback first, which caused a visible "flash" on first load.
+  Body text (Jost) keeps display=swap so it shows straight away.
+{%- endcomment -%}
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Pinyon+Script&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="{{ 'advent-calendar.js' | asset_url }}" defer="defer"></script>

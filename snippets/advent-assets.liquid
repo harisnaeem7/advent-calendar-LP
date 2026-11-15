@@ -1,0 +1,11 @@
+{%- comment -%}
+  Stylesheet, fonts and script shared by every Advent section.
+  On the advent-calendar product template this is rendered once in <head> (layout/theme.liquid),
+  so the page is styled before it first paints. If an Advent section is added to any other
+  template, the section renders this itself as a fallback.
+{%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{ 'advent-calendar.css' | asset_url | stylesheet_tag: preload: true }}
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Pinyon+Script&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="{{ 'advent-calendar.js' | asset_url }}" defer="defer"></script>

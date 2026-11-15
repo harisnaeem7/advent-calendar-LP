@@ -1,0 +1,197 @@
+{%- comment -%}
+  Advent: Under the tree · Twelve Days of Framar advent calendar.
+  Standalone section; shares assets/advent-calendar.css with the other Advent sections.
+{%- endcomment -%}
+
+{%- comment -%} Loaded once in <head> on the advent-calendar template; anywhere else the section loads it itself. {%- endcomment -%}
+{%- unless template.suffix == 'advent-calendar' -%}
+  {% render 'advent-assets' %}
+{%- endunless -%}
+
+{%- liquid
+  assign adv_product = section.settings.product | default: product
+  assign variant = adv_product.selected_or_first_available_variant
+  if adv_product != blank
+    assign price_label = variant.price | money
+  else
+    assign price_label = section.settings.placeholder_price
+  endif
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .adv-tree-soft { background-image: url({{ 'advent-pattern-trees.svg' | asset_url }}); }
+  #shopify-section-{{ section.id }} .adv-section { background-color: #F7F3EC; }
+{% endstyle %}
+
+<advent-calendar class="adv">
+<section id="under-the-tree" class="adv-section adv-tree adv-tree-soft">
+  <div class="adv-wrap--narrow adv-tree__grid">
+    <div class="adv-tree__copy">
+      <span class="adv-eyebrow">{{ section.settings.tree_eyebrow }}</span>
+      <h2 class="adv-h2">{{ section.settings.tree_heading }}</h2>
+      <p class="adv-lede">{{ section.settings.tree_text }}</p>
+      {%- if section.settings.tree_note != blank -%}
+        <div class="adv-tree__note">
+          {% render 'advent-icon', icon: 'sparkle', size: 20, fill: '#D9A46E' %}
+          <span>{{ section.settings.tree_note }}</span>
+        </div>
+      {%- endif -%}
+      <div><a href="#product" class="adv-btn adv-btn--red adv-btn--lg">{{ section.settings.tree_cta }} · {{ price_label }}</a></div>
+    </div>
+
+    <div class="adv-tree__art">
+      <div class="adv-tree__glow" aria-hidden="true"></div>
+      <img class="adv-tree__img" src="{{ 'advent-tree.svg' | asset_url }}" alt="" width="1000" height="1200" loading="lazy" aria-hidden="true">
+      <svg class="adv-tree__garland" aria-hidden="true" viewBox="0 0 1000 1200">
+        <g fill="none" stroke-linecap="round">
+          <path d="M412 330 Q520 450 640 418" stroke="#B98034" stroke-width="2"></path>
+          <path d="M412 330 Q520 450 640 418" stroke="#F2CF8C" stroke-width="9" stroke-dasharray="0.1 16"></path>
+          <path d="M700 562 Q480 715 292 690" stroke="#B98034" stroke-width="2"></path>
+          <path d="M700 562 Q480 715 292 690" stroke="#F2CF8C" stroke-width="9" stroke-dasharray="0.1 16"></path>
+          <path d="M232 832 Q520 965 850 922" stroke="#B98034" stroke-width="2"></path>
+          <path d="M232 832 Q520 965 850 922" stroke="#F2CF8C" stroke-width="9" stroke-dasharray="0.1 16"></path>
+        </g>
+        <g>
+          <circle cx="560" cy="300" r="22" fill="#A8192A"></circle><circle cx="553" cy="293" r="6" fill="#FFFFFF" opacity=".45"></circle>
+          <circle cx="330" cy="640" r="26" fill="#E0B04A"></circle><circle cx="322" cy="632" r="7" fill="#FFFFFF" opacity=".45"></circle>
+          <circle cx="700" cy="780" r="26" fill="#A8192A"></circle><circle cx="692" cy="772" r="7" fill="#FFFFFF" opacity=".45"></circle>
+          <circle cx="480" cy="760" r="20" fill="#E0B04A"></circle><circle cx="474" cy="754" r="5" fill="#FFFFFF" opacity=".45"></circle>
+        </g>
+        <g fill="#FFE9B8">
+          <circle class="adv-bulb" cx="430" cy="360" r="7" style="animation-delay:0s"></circle>
+          <circle class="adv-bulb" cx="500" cy="395" r="7" style="animation-delay:-1s"></circle>
+          <circle class="adv-bulb" cx="590" cy="418" r="7" style="animation-delay:-2s"></circle>
+          <circle class="adv-bulb" cx="680" cy="595" r="7" style="animation-delay:-3s"></circle>
+          <circle class="adv-bulb" cx="520" cy="665" r="7" style="animation-delay:-.5s"></circle>
+          <circle class="adv-bulb" cx="350" cy="702" r="7" style="animation-delay:-1.5s"></circle>
+          <circle class="adv-bulb" cx="300" cy="880" r="7" style="animation-delay:-2.5s"></circle>
+          <circle class="adv-bulb" cx="470" cy="912" r="7" style="animation-delay:-3.5s"></circle>
+          <circle class="adv-bulb" cx="760" cy="930" r="7" style="animation-delay:-4s"></circle>
+        </g>
+      </svg>
+
+      <div class="adv-ornament adv-ornament--1 adv-sway">{% render 'advent-image', image: section.settings.tree_ornament_1, sizes: '90px' %}</div>
+      <div class="adv-ornament adv-ornament--2 adv-sway">{% render 'advent-image', image: section.settings.tree_ornament_2, sizes: '90px' %}</div>
+      <div class="adv-ornament adv-ornament--3 adv-sway">{% render 'advent-image', image: section.settings.tree_ornament_3, sizes: '90px' %}</div>
+      <div class="adv-ornament adv-ornament--4 adv-sway">{% render 'advent-image', image: section.settings.tree_ornament_4, sizes: '90px' %}</div>
+
+      <div class="adv-tree__skirt" aria-hidden="true"></div>
+      {%- if section.settings.box_image_left != blank -%}
+        {{ section.settings.box_image_left | image_url: width: 800 | image_tag: class: 'adv-tree__box adv-tree__box--open', sizes: '260px', loading: 'lazy', alt: section.settings.box_image_left.alt }}
+      {%- endif -%}
+      {%- if section.settings.box_image_centre != blank -%}
+        {{ section.settings.box_image_centre | image_url: width: 1000 | image_tag: class: 'adv-tree__box adv-tree__box--closed', sizes: '340px', loading: 'lazy', alt: section.settings.box_image_centre.alt }}
+      {%- endif -%}
+      <div class="adv-foil-stack" aria-hidden="true">
+        <div class="adv-foil-stack__box" style="--bg:#E86FA6;--ring:#F7C3D7;width:86%"><div class="adv-foil-stack__ring">8</div><div class="adv-foil-stack__brand">{{ section.settings.foil_brand }}</div></div>
+        <div class="adv-foil-stack__box" style="--bg:#5E7F5C;--ring:#8CC7A5;width:94%"><div class="adv-foil-stack__ring">5</div><div class="adv-foil-stack__brand">{{ section.settings.foil_brand }}</div></div>
+        <div class="adv-foil-stack__box" style="--bg:#D9312E;--ring:#B5232A;width:100%"><div class="adv-foil-stack__ring">2</div><div class="adv-foil-stack__brand">{{ section.settings.foil_brand }}</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</advent-calendar>
+
+{% schema %}
+{
+  "name": "Advent: Under the tree",
+  "tag": "div",
+  "class": "section-advent-tree",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Leave empty on a product template to use that product."
+    },
+    {
+      "type": "text",
+      "id": "placeholder_price",
+      "label": "Price shown when no product is set",
+      "default": "Lorem"
+    },
+    {
+      "type": "text",
+      "id": "tree_eyebrow",
+      "label": "Eyebrow",
+      "default": "Lorem ipsum dolor"
+    },
+    {
+      "type": "text",
+      "id": "tree_heading",
+      "label": "Heading",
+      "default": "Lorem ipsum dolor sit amet consectetur."
+    },
+    {
+      "type": "textarea",
+      "id": "tree_text",
+      "label": "Text",
+      "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud."
+    },
+    {
+      "type": "text",
+      "id": "tree_note",
+      "label": "Note",
+      "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod."
+    },
+    {
+      "type": "text",
+      "id": "tree_cta",
+      "label": "Button label",
+      "info": "The price is added after it.",
+      "default": "Lorem ipsum dolor"
+    },
+    {
+      "type": "header",
+      "content": "Ornament photos"
+    },
+    {
+      "type": "image_picker",
+      "id": "tree_ornament_1",
+      "label": "Ornament 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "tree_ornament_2",
+      "label": "Ornament 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "tree_ornament_3",
+      "label": "Ornament 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "tree_ornament_4",
+      "label": "Ornament 4"
+    },
+    {
+      "type": "header",
+      "content": "Boxes under the tree"
+    },
+    {
+      "type": "image_picker",
+      "id": "box_image_left",
+      "label": "Box photo (left)",
+      "info": "A cut-out PNG with a transparent background works best. Leave empty to hide."
+    },
+    {
+      "type": "image_picker",
+      "id": "box_image_centre",
+      "label": "Box photo (centre)",
+      "info": "A cut-out PNG with a transparent background works best. Leave empty to hide."
+    },
+    {
+      "type": "text",
+      "id": "foil_brand",
+      "label": "Text on the small foil boxes",
+      "default": "LOREM"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advent: Under the tree"
+    }
+  ]
+}
+{% endschema %}

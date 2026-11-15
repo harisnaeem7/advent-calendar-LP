@@ -1,0 +1,231 @@
+{%- comment -%}
+  Advent: Hero · Twelve Days of Framar advent calendar.
+  Standalone section for product templates; shares assets/advent-calendar.css and .js with the other Advent sections.
+  "Add to bag" adds the page's product (first available variant) straight to the cart.
+{%- endcomment -%}
+
+{%- comment -%} Loaded once in <head> on the advent-calendar template; anywhere else the section loads it itself. {%- endcomment -%}
+{%- unless template.suffix == 'advent-calendar' -%}
+  {% render 'advent-assets' %}
+{%- endunless -%}
+
+{%- comment -%} Uses the product of the page this section sits on (product templates). {%- endcomment -%}
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  if product != blank
+    assign price_label = variant.price | money
+  endif
+-%}
+
+<advent-calendar class="adv" data-money-format="{{ shop.money_format | strip_html | escape }}">
+{%- liquid
+  assign hero_bg = section.settings.hero_bg | default: '#1F3A2C'
+  assign hero_light = false
+  if section.settings.hero_bg != blank and section.settings.hero_bg.lightness > 60
+    assign hero_light = true
+  endif
+-%}
+{%- assign top_deco = section.settings.top_decoration | default: 'microlights' -%}
+<section id="hero" class="adv-hero{% if hero_light %} adv-hero--light{% endif %}{% if top_deco != 'none' %} adv-hero--{{ top_deco }}{% endif %}" style="background-color: {{ hero_bg }}; --frame: {{ section.settings.frame_color | default: '#A8192A' }};">
+  {%- if top_deco != 'none' -%}{% render 'advent-decor', type: top_deco %}{%- endif -%}
+  {% render 'advent-decor', type: 'stars' %}
+
+  <div class="adv-hero__inner">
+    <div class="adv-hero__copy">
+      <div class="adv-hero__badges">
+        {%- if section.settings.hero_badge_1 != blank -%}<span class="adv-pill adv-pill--red">{{ section.settings.hero_badge_1 }}</span>{%- endif -%}
+        {%- if section.settings.hero_badge_2 != blank -%}<span class="adv-pill adv-pill--outline">{{ section.settings.hero_badge_2 }}</span>{%- endif -%}
+      </div>
+      <h1 class="adv-hero__title">{{ section.settings.hero_title }}</h1>
+      <p class="adv-hero__text">{{ section.settings.hero_text }}</p>
+      <div class="adv-hero__ctas">
+        {%- if product != blank -%}
+          {%- form 'product', product, class: 'adv-hero__cart', data-advent-cart: 'true', data-added-label: section.settings.added_label -%}
+            <input type="hidden" name="id" value="{{ variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="adv-btn adv-btn--red{% unless variant.available %} adv-btn--soldout{% endunless %}"{% unless variant.available %} disabled{% endunless %}>
+              <span data-cart-label>
+                {%- if variant.available -%}{{ section.settings.hero_cta }} · {{ price_label }}{%- else -%}{{ section.settings.sold_out_label }}{%- endif -%}
+              </span>
+            </button>
+            <p class="adv-form__error" role="alert" data-cart-error hidden></p>
+          {%- endform -%}
+        {%- elsif request.design_mode -%}
+          <span class="adv-btn adv-btn--red" aria-disabled="true">{{ section.settings.hero_cta }}</span>
+        {%- endif -%}
+        <a href="{{ section.settings.hero_cta_secondary_link | default: '#product' }}" class="adv-btn adv-btn--ghost">{{ section.settings.hero_cta_secondary }}</a>
+      </div>
+    </div>
+
+    <div class="adv-hero__media">
+      <div class="adv-hero__visual">
+        <div class="adv-hero__arch"></div>
+        {% render 'advent-image',
+          image: section.settings.hero_image,
+          class: 'adv-hero__main', sizes: '(min-width: 1320px) 420px, (min-width: 750px) 33vw, 66vw', loading: 'eager'
+        %}
+        {% render 'advent-image',
+          image: section.settings.hero_image_2,
+          class: 'adv-hero__polaroid', sizes: '240px', loading: 'eager'
+        %}
+        <div class="adv-tag">
+          <div class="adv-tag__knot" aria-hidden="true"></div>
+          <div class="adv-tag__thread" aria-hidden="true"></div>
+          <div class="adv-tag__eyelet" aria-hidden="true"></div>
+          <div class="adv-tag__card">
+            <div class="adv-tag__panel" aria-hidden="true"></div>
+            <div class="adv-tag__label">{{ section.settings.tag_label }}</div>
+            <div class="adv-tag__num">{{ section.settings.tag_number }}</div>
+            <svg class="adv-tag__rule" viewBox="0 0 44 8" aria-hidden="true" focusable="false"><path d="M2 4h14M28 4h14" stroke="#D9A46E" stroke-width=".8" stroke-linecap="round"></path><path d="M22 .5Q22.6 3.4 25.5 4Q22.6 4.6 22 7.5Q21.4 4.6 18.5 4Q21.4 3.4 22 .5Z" fill="#D9A46E"></path></svg>
+            <div class="adv-tag__script">{{ section.settings.tag_script }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="adv-hero__band" aria-hidden="true"></div>
+</section>
+</advent-calendar>
+
+{% schema %}
+{
+  "name": "Advent: Hero",
+  "tag": "div",
+  "class": "section-advent-hero",
+  "settings": [
+    {
+      "type": "color",
+      "id": "hero_bg",
+      "label": "Background",
+      "info": "Light colours switch the hero text to dark green.",
+      "default": "#1F3A2C"
+    },
+    {
+      "type": "color",
+      "id": "frame_color",
+      "label": "Photo frame colour",
+      "info": "The arch around the main photo and the band along the bottom of the hero.",
+      "default": "#A8192A"
+    },
+    {
+      "type": "select",
+      "id": "top_decoration",
+      "label": "Top decoration",
+      "default": "microlights",
+      "options": [
+        {
+          "value": "icicles",
+          "label": "Icicle lights"
+        },
+        {
+          "value": "microlights",
+          "label": "Micro lights"
+        },
+        {
+          "value": "ornaments",
+          "label": "Hanging ornaments"
+        },
+        {
+          "value": "lights",
+          "label": "Fairy lights"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "hero_badge_1",
+      "label": "Red badge",
+      "default": "Lorem ipsum"
+    },
+    {
+      "type": "text",
+      "id": "hero_badge_2",
+      "label": "Outline badge",
+      "default": "Lorem ipsum"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Heading",
+      "default": "Lorem ipsum dolor sit"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_text",
+      "label": "Text",
+      "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis."
+    },
+    {
+      "type": "text",
+      "id": "hero_cta",
+      "label": "Buy button label",
+      "info": "Adds this page's product to the cart. The price is added after the label.",
+      "default": "Lorem ipsum dolor"
+    },
+    {
+      "type": "text",
+      "id": "added_label",
+      "label": "Added confirmation",
+      "default": "Lorem ipsum dolor"
+    },
+    {
+      "type": "text",
+      "id": "sold_out_label",
+      "label": "Sold-out label",
+      "default": "Lorem ipsum"
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_secondary",
+      "label": "Secondary button label",
+      "default": "Lorem ipsum"
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_secondary_link",
+      "label": "Secondary button link",
+      "info": "Defaults to #product, the Advent: Product section on this page.",
+      "default": "Lorem"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Arch photo",
+      "info": "Main photo inside the arch. Portrait, about 2:3 (e.g. 1200 × 1800 px). Cropped to fill, so keep the subject centred."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_2",
+      "label": "Polaroid photo",
+      "info": "Tilted photo at the bottom left. Portrait, 3:4 (e.g. 900 × 1200 px)."
+    },
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Gift tag: label",
+      "default": "Lorem"
+    },
+    {
+      "type": "text",
+      "id": "tag_number",
+      "label": "Gift tag: number",
+      "default": "Lorem"
+    },
+    {
+      "type": "text",
+      "id": "tag_script",
+      "label": "Gift tag: script line",
+      "default": "Lorem ipsum dolor"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advent: Hero"
+    }
+  ]
+}
+{% endschema %}

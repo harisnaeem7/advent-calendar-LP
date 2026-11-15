@@ -1,0 +1,258 @@
+{%- comment -%}
+  Advent: How it works · Twelve Days of Framar advent calendar.
+  Two layouts (setting: Layout). Cards: icon cards linked by a dotted line.
+  Timeline: pinned heading + steps on a line (icon chip, title, text), with a CSS scroll-driven reveal. No JavaScript.
+{%- endcomment -%}
+
+{%- comment -%} Loaded once in <head> on the advent-calendar template; anywhere else the section loads it itself. {%- endcomment -%}
+{%- unless template.suffix == 'advent-calendar' -%}
+  {% render 'advent-assets' %}
+{%- endunless -%}
+
+{%- assign sid = '#shopify-section-' | append: section.id -%}
+{% style %}
+  {{ sid }} .adv-how {
+    --how-bg: {{ section.settings.background_color | default: '#F7F3EC' }};
+    --how-heading: {{ section.settings.heading_color | default: '#1F3A2C' }};
+    --how-text: {{ section.settings.text_color | default: '#4A5D50' }};
+    --how-accent: {{ section.settings.accent_color | default: '#A8192A' }};
+    --how-card: {{ section.settings.card_color | default: '#FFFFFF' }};
+    --how-icon-bg: {{ section.settings.icon_bg_color | default: '#FBE9E8' }};
+  }
+{% endstyle %}
+
+{%- assign layout = section.settings.layout | default: 'cards' -%}
+<div class="adv">
+  <section id="how-it-works" class="adv-section adv-how adv-how--{{ layout }}">
+    <div class="adv-wrap--narrow adv-how__wrap">
+      <div class="adv-how__head">
+        {%- if section.settings.how_eyebrow != blank -%}
+          <span class="adv-eyebrow adv-how__eyebrow">{{ section.settings.how_eyebrow }}</span>
+        {%- endif -%}
+        <h2 class="adv-h2 adv-how__heading">{{ section.settings.how_heading }}</h2>
+        {%- if section.settings.how_text != blank -%}
+          <p class="adv-how__text">{{ section.settings.how_text }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        {%- if layout == 'timeline' -%}
+          <ol class="adv-how__track">
+            {%- for block in section.blocks -%}
+              <li class="adv-how__row" {{ block.shopify_attributes }}>
+                <div class="adv-how__row-body">
+                  <span class="adv-how__chip">
+                    {% render 'advent-icon', icon: block.settings.icon, size: 22 %}
+                    <span>{{ section.settings.step_label }} {{ forloop.index }}</span>
+                  </span>
+                  <h3 class="adv-how__title">{{ block.settings.title }}</h3>
+                  {%- if block.settings.body != blank -%}
+                    <p class="adv-how__body">{{ block.settings.body }}</p>
+                  {%- endif -%}
+                </div>
+              </li>
+            {%- endfor -%}
+          </ol>
+        {%- else -%}
+          <ol class="adv-how__steps">
+            {%- for block in section.blocks -%}
+              <li class="adv-how__step" {{ block.shopify_attributes }}>
+                <span class="adv-how__badge">{{ section.settings.step_label }} {{ forloop.index }}</span>
+                <span class="adv-how__icon">{% render 'advent-icon', icon: block.settings.icon, size: 30 %}</span>
+                <h3 class="adv-how__title">{{ block.settings.title }}</h3>
+                {%- if block.settings.body != blank -%}
+                  <p class="adv-how__body">{{ block.settings.body }}</p>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ol>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Advent: How it works",
+  "tag": "div",
+  "class": "section-advent-how",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "default": "cards",
+      "options": [
+        {
+          "value": "cards",
+          "label": "Cards"
+        },
+        {
+          "value": "timeline",
+          "label": "Timeline (scroll animation)"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "how_eyebrow",
+      "label": "Small heading",
+      "default": "Lorem ipsum dolor"
+    },
+    {
+      "type": "text",
+      "id": "how_heading",
+      "label": "Heading",
+      "default": "Lorem ipsum dolor"
+    },
+    {
+      "type": "textarea",
+      "id": "how_text",
+      "label": "Text",
+      "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et."
+    },
+    {
+      "type": "text",
+      "id": "step_label",
+      "label": "Step badge label",
+      "info": "Shown before the step number on each step, e.g. “Step 1”.",
+      "default": "Lorem"
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#F7F3EC"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Headings",
+      "default": "#1F3A2C"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#4A5D50"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent (small heading, badges, icons, dotted line)",
+      "default": "#A8192A"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card background",
+      "default": "#FFFFFF",
+      "info": "Cards layout only."
+    },
+    {
+      "type": "color",
+      "id": "icon_bg_color",
+      "label": "Icon background",
+      "default": "#FBE9E8",
+      "info": "The circle behind icons (Cards) and the step chip (Timeline)."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "step-bag",
+          "options": [
+            {
+              "value": "step-bag",
+              "label": "Shopping bag"
+            },
+            {
+              "value": "step-gift",
+              "label": "Gift"
+            },
+            {
+              "value": "step-door",
+              "label": "Drawer / door"
+            },
+            {
+              "value": "step-calendar",
+              "label": "Calendar"
+            },
+            {
+              "value": "step-sparkle",
+              "label": "Sparkle"
+            },
+            {
+              "value": "step-truck",
+              "label": "Delivery truck"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Lorem ipsum dolor"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Text",
+          "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advent: How it works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Lorem ipsum dolor",
+            "body": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna.",
+            "icon": "step-bag"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Lorem ipsum dolor sit amet",
+            "body": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut.",
+            "icon": "step-door"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Lorem ipsum dolor",
+            "body": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.",
+            "icon": "step-sparkle"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

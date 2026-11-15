@@ -1,0 +1,232 @@
+{%- comment -%}
+  Advent: Intro · Twelve Days of Framar advent calendar.
+  Standalone section; shares assets/advent-calendar.css with the other Advent sections.
+  On phones and tablets the hanging photos show above the text.
+{%- endcomment -%}
+
+{%- comment -%} Loaded once in <head> on the advent-calendar template; anywhere else the section loads it itself. {%- endcomment -%}
+{%- unless template.suffix == 'advent-calendar' -%}
+  {% render 'advent-assets' %}
+{%- endunless -%}
+
+{%- liquid
+  assign sid = '#shopify-section-' | append: section.id
+-%}
+{% style %}
+  {{ sid }} .adv-intro { background-color: {{ section.settings.background_color | default: '#FFF8F5' }}; }
+  {{ sid }} .adv-intro .adv-h2 { color: {{ section.settings.heading_color | default: '#1F3A2C' }}; }
+  {{ sid }} .adv-intro .adv-lede { color: {{ section.settings.text_color | default: '#4A5D50' }}; }
+  {{ sid }} .adv-polaroid__cap { color: {{ section.settings.caption_color | default: '#1F3A2C' }}; }
+  {{ sid }} .adv-explainer { background: {{ section.settings.box_color | default: '#1F3A2C' }}; }
+  {{ sid }} .adv-explainer__title { color: {{ section.settings.box_title_color | default: '#F7F3EC' }}; }
+  {{ sid }} .adv-explainer__text { color: {{ section.settings.box_text_color | default: '#DCE6DC' }}; }
+  {{ sid }} .adv-explainer__icon { background: {{ section.settings.accent_color | default: '#A8192A' }}; }
+  {{ sid }} .adv-intro .adv-btn--red,
+  {{ sid }} .adv-intro .adv-btn--red:hover {
+    background: {{ section.settings.button_color | default: '#A8192A' }};
+    color: {{ section.settings.button_text_color | default: '#FFFFFF' }};
+  }
+{% endstyle %}
+
+<advent-calendar class="adv">
+<section id="intro" class="adv-section adv-intro">
+  <div class="adv-wrap adv-intro__grid">
+    <div class="adv-intro__copy">
+      <h2 class="adv-h2">{{ section.settings.intro_heading }}</h2>
+      <p class="adv-lede">{{ section.settings.intro_text }}</p>
+      {%- if section.settings.explainer_title != blank -%}
+        <div class="adv-explainer">
+          <div class="adv-explainer__icon">{% render 'advent-icon', icon: 'calendar' %}</div>
+          <div class="adv-explainer__body">
+            <span class="adv-explainer__title">{{ section.settings.explainer_title }}</span>
+            <span class="adv-explainer__text">{{ section.settings.explainer_text }}</span>
+          </div>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.intro_cta != blank -%}
+        <div><a href="{{ section.settings.intro_cta_link | default: '#product' }}" class="adv-btn adv-btn--red adv-btn--md">{{ section.settings.intro_cta }}</a></div>
+      {%- endif -%}
+    </div>
+
+    <div class="adv-intro__photos">
+      <div class="adv-intro__string" aria-hidden="true"></div>
+      <div class="adv-hang adv-hang--left adv-sway">
+        <div class="adv-hang__clip"></div>
+        <div class="adv-polaroid">
+          {% render 'advent-image',
+            image: section.settings.intro_image_1, sizes: '(min-width: 750px) 320px, 52vw'
+          %}
+          <div class="adv-polaroid__cap">{{ section.settings.intro_caption_1 }}</div>
+        </div>
+      </div>
+      <div class="adv-hang adv-hang--right adv-sway">
+        <div class="adv-hang__clip"></div>
+        <div class="adv-polaroid">
+          {% render 'advent-image',
+            image: section.settings.intro_image_2, sizes: '(min-width: 750px) 280px, 44vw'
+          %}
+          <div class="adv-polaroid__cap">{{ section.settings.intro_caption_2 }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</advent-calendar>
+
+{% schema %}
+{
+  "name": "Advent: Intro",
+  "tag": "div",
+  "class": "section-advent-intro",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "intro_heading",
+      "label": "Heading",
+      "default": "Lorem ipsum dolor sit amet"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Text",
+      "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "type": "header",
+      "content": "Explainer box"
+    },
+    {
+      "type": "text",
+      "id": "explainer_title",
+      "label": "Explainer title",
+      "default": "Lorem ipsum dolor sit",
+      "info": "Leave empty to hide the green explainer box."
+    },
+    {
+      "type": "textarea",
+      "id": "explainer_text",
+      "label": "Explainer text",
+      "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "intro_cta",
+      "label": "Button label",
+      "default": "Lorem ipsum",
+      "info": "Leave empty to hide the button."
+    },
+    {
+      "type": "text",
+      "id": "intro_cta_link",
+      "label": "Button link",
+      "info": "A page URL, or #product to jump to the Advent: Product section on this page.",
+      "default": "Lorem"
+    },
+    {
+      "type": "header",
+      "content": "Hanging photos"
+    },
+    {
+      "type": "image_picker",
+      "id": "intro_image_1",
+      "label": "Left polaroid",
+      "info": "Portrait 4:5 (e.g. 1000 × 1250 px)."
+    },
+    {
+      "type": "text",
+      "id": "intro_caption_1",
+      "label": "Left caption",
+      "default": "Lorem ipsum dolor sit"
+    },
+    {
+      "type": "image_picker",
+      "id": "intro_image_2",
+      "label": "Right polaroid",
+      "info": "Portrait 4:5 (e.g. 1000 × 1250 px)."
+    },
+    {
+      "type": "text",
+      "id": "intro_caption_2",
+      "label": "Right caption",
+      "default": "Lorem ipsum dolor"
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#FFF8F5"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#1F3A2C"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#4A5D50"
+    },
+    {
+      "type": "color",
+      "id": "caption_color",
+      "label": "Photo captions",
+      "default": "#1F3A2C"
+    },
+    {
+      "type": "color",
+      "id": "box_color",
+      "label": "Explainer box background",
+      "default": "#1F3A2C"
+    },
+    {
+      "type": "color",
+      "id": "box_title_color",
+      "label": "Explainer box title",
+      "default": "#F7F3EC"
+    },
+    {
+      "type": "color",
+      "id": "box_text_color",
+      "label": "Explainer box text",
+      "default": "#DCE6DC"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Explainer icon circle",
+      "default": "#A8192A"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button",
+      "default": "#A8192A"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advent: Intro"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,251 @@
+{
+  "sections": {
+    "hero": {
+      "type": "advent-hero",
+      "settings": {
+        "hero_bg": "#1F3A2C",
+        "top_decoration": "icicles",
+        "hero_badge_1": "Limited edition",
+        "hero_badge_2": "Advent 2026",
+        "hero_title": "Twelve Days of Framar",
+        "hero_text": "Twelve 5x11 pop-up foils with 100 festive sheets in every box. Open one a day from December 13 and reach drawer 12 on Christmas Eve.",
+        "hero_cta": "Add to bag",
+        "added_label": "Added to bag",
+        "sold_out_label": "Sold out",
+        "hero_cta_secondary": "Learn more",
+        "hero_cta_secondary_link": "#product",
+        "tag_label": "Inside",
+        "tag_number": "1,200",
+        "tag_script": "sheets of foil"
+      }
+    },
+    "intro": {
+      "type": "advent-intro",
+      "settings": {
+        "intro_heading": "Our Advent Calendar is here!",
+        "intro_text": "Get ready to sleigh the season with Framar’s 12 Days of Foils. Wrapped in candy-cane stripes and a pink satin bow, it’s as lovely on your station as it is under the tree. Untie the ribbon, open a numbered drawer each day, and find a little holiday magic inside.",
+        "explainer_title": "What's an advent calendar?",
+        "explainer_text": "A countdown to Christmas, one little door at a time. Classic calendars run December 1-24. Ours saves the magic for the final twelve days: December 13 to Christmas Eve.",
+        "intro_cta": "Shop now",
+        "intro_cta_link": "#product",
+        "intro_caption_1": "all twelve, tucked in",
+        "intro_caption_2": "under the tree"
+      }
+    },
+    "inside": {
+      "type": "advent-inside",
+      "settings": {
+        "eyebrow": "Open the box",
+        "heading": "What's Inside?",
+        "text": "<p>Twelve numbered drawers, one for each day from December 13 to Christmas Eve. Each one holds a surprise foil that’ll leave you feeling merry and bright.</p>",
+        "note": "Every calendar is packed with its own surprise mix of patterns."
+      },
+      "blocks": {
+        "fact_1": {
+          "type": "fact",
+          "settings": {
+            "value": "12",
+            "label": "pop-up foil boxes"
+          }
+        },
+        "fact_2": {
+          "type": "fact",
+          "settings": {
+            "value": "100",
+            "label": "sheets in every box"
+          }
+        },
+        "fact_3": {
+          "type": "fact",
+          "settings": {
+            "value": "5x11",
+            "label": "foil size"
+          }
+        }
+      },
+      "block_order": [
+        "fact_1",
+        "fact_2",
+        "fact_3"
+      ]
+    },
+    "how": {
+      "type": "advent-how",
+      "settings": {
+        "layout": "timeline",
+        "how_eyebrow": "Three merry steps",
+        "how_heading": "How It Works",
+        "how_text": "From your bag to your station: twelve days of holiday magic, one drawer at a time.",
+        "step_label": "Step"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Order Your Calendar",
+            "body": "Add Twelve Days of Framar to your bag. It arrives wrapped in candy-cane stripes and a satin bow.",
+            "icon": "step-bag"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Open a Drawer Each Day",
+            "body": "Starting December 13, count down to Christmas by opening one numbered drawer each day.",
+            "icon": "step-door"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Enjoy the Magic",
+            "body": "Discover the foil waiting in each drawer and spread some cheer, one fabulous foil at a time.",
+            "icon": "step-sparkle"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    },
+    "product": {
+      "type": "advent-product",
+      "settings": {
+        "gallery_badge": "Limited edition",
+        "brand_label": "Framar",
+        "buy_subtitle": "Twelve Days of Framar",
+        "stock_label": "In stock",
+        "sold_out_label": "Sold out",
+        "fact_1_value": "12 days",
+        "fact_1_label": "of surprise foils",
+        "fact_2_value": "5x11 Pop Up",
+        "fact_2_label": "foil size",
+        "fact_3_value": "100 sheets",
+        "fact_3_label": "in every box",
+        "cart_label": "Add to bag",
+        "added_label": "Added to bag",
+        "ship_cutoff": "2026-12-10T17:00:00-05:00",
+        "ship_title": "Fast shipping!",
+        "ship_before": "Order within",
+        "ship_fallback": "the next few days",
+        "ship_after": "and it ships tomorrow, in time for door 1."
+      },
+      "blocks": {
+        "accordion_1": {
+          "type": "accordion",
+          "settings": {
+            "title": "Why you need it",
+            "body": "<p>[Add copy: why stylists love this calendar]</p>"
+          }
+        },
+        "accordion_2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping",
+            "body": "<p>[Add copy: shipping times and regions]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_1",
+        "accordion_2"
+      ]
+    },
+    "reviews": {
+      "type": "advent-reviews",
+      "settings": {
+        "reviews_eyebrow": "From the salon chair",
+        "reviews_heading": "Loved by stylists",
+        "reviews_text": "Real words from stylists who reach for Framar every day."
+      },
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "quote": "i love framar because they’re a brand for the stylists and they make being a hairstylist much more fun.",
+            "name": "Lisa Giles",
+            "initials": "LG",
+            "handle": "@lifeoflisag",
+            "url": "https://www.instagram.com/lifeoflisag"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "quote": "framar foils are the only ones I reach for, they’ve completely won me over. It’s a brand I believe in!!",
+            "name": "Bailey Lavender",
+            "initials": "BL",
+            "handle": "@thebaileylavender",
+            "url": "https://www.instagram.com/thebaileylavender",
+            "featured": true
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "quote": "As a summer soul, I’m drawn to things that are bold, bright, and full of life. & that’s exactly what this brand is.",
+            "name": "Marquie Covington",
+            "initials": "MC",
+            "handle": "@mirroredbymarquie",
+            "url": "https://www.instagram.com/mirroredbymarquie"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ]
+    },
+    "videos": {
+      "type": "advent-videos",
+      "settings": {
+        "videos_heading": "See it in action",
+        "videos_text": "Real stylists, real unboxings. Tap a video to watch."
+      },
+      "blocks": {
+        "video_1": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_2": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_3": {
+          "type": "video",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "video_1",
+        "video_2",
+        "video_3"
+      ]
+    },
+    "tree": {
+      "type": "advent-tree",
+      "settings": {
+        "placeholder_price": "$79.99",
+        "tree_eyebrow": "Under the tree",
+        "tree_heading": "The gift that keeps on foiling",
+        "tree_text": "Twelve Days of Framar waiting under the tree, with a few favourite moments hanging from its branches. Spread some cheer, one fabulous foil at a time.",
+        "tree_note": "The ultimate gift for the stylist in your life, or yourself.",
+        "tree_cta": "Add to bag",
+        "foil_brand": "FRAMAR"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "intro",
+    "inside",
+    "how",
+    "product",
+    "reviews",
+    "videos",
+    "tree"
+  ]
+}

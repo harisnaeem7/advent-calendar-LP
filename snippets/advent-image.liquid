@@ -1,0 +1,30 @@
+{%- comment -%}
+  Responsive image for the Advent sections. Alt text comes from the image itself
+  (set it in Shopify admin > Content > Files). With no image picked, Shopify's
+  placeholder is shown so the layout keeps its shape in the editor.
+
+  Accepts:
+  - image    {Object} image_picker value or product media image
+  - class    {String}
+  - sizes    {String} default 100vw
+  - loading  {String} lazy | eager (default lazy)
+  - attrs    {String} extra raw attributes (e.g. data-gallery-main)
+{%- endcomment -%}
+{%- liquid
+  assign _sizes = sizes | default: '100vw'
+  assign _loading = loading | default: 'lazy'
+-%}
+{%- if image != blank -%}
+  {%- capture _img -%}
+    {{ image | image_url: width: 1600 | image_tag: class: class, alt: image.alt, sizes: _sizes, loading: _loading, widths: '360, 540, 720, 960, 1200, 1600' }}
+  {%- endcapture -%}
+  {%- if attrs != blank -%}
+    {%- assign _open = '<img ' | append: attrs | append: ' ' -%}
+    {{- _img | strip | replace_first: '<img ', _open -}}
+  {%- else -%}
+    {{- _img | strip -}}
+  {%- endif -%}
+{%- else -%}
+  {%- assign _class = 'adv-placeholder ' | append: class -%}
+  {{ 'image' | placeholder_svg_tag: _class }}
+{%- endif -%}

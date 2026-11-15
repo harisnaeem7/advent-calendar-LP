@@ -1,0 +1,135 @@
+{%- comment -%}
+  Advent: Videos · Twelve Days of Framar advent calendar.
+  Standalone section; shares assets/advent-calendar.css and .js with the other Advent sections.
+{%- endcomment -%}
+
+{%- comment -%} Loaded once in <head> on the advent-calendar template; anywhere else the section loads it itself. {%- endcomment -%}
+{%- unless template.suffix == 'advent-calendar' -%}
+  {% render 'advent-assets' %}
+{%- endunless -%}
+
+{%- liquid
+  assign videos = section.blocks | where: 'type', 'video'
+-%}
+
+<advent-calendar class="adv">
+{%- if videos.size > 0 -%}
+  <section id="videos" class="adv-section adv-videos">
+    <div class="adv-wrap adv-videos__wrap">
+      <div class="adv-videos__head">
+        <h2 class="adv-h2 adv-h2--light">{{ section.settings.videos_heading }}</h2>
+        <p class="adv-lede adv-lede--light">{{ section.settings.videos_text }}</p>
+      </div>
+      <div class="adv-videos__track">
+        {%- for block in videos -%}
+          {%- liquid
+            assign r3 = forloop.index0 | modulo: 3
+            case r3
+              when 0
+                assign rot = '-1.5deg'
+              when 1
+                assign rot = '1deg'
+              else
+                assign rot = '-1deg'
+            endcase
+            assign video_src = ''
+            if block.settings.video != blank
+              assign mp4 = block.settings.video.sources | where: 'mime_type', 'video/mp4' | first
+              assign video_src = mp4.url | default: block.settings.video.sources.first.url
+            elsif block.settings.video_url != blank
+              assign video_src = block.settings.video_url
+            endif
+            assign poster = block.settings.poster | default: block.settings.video.preview_image
+          -%}
+          <div class="adv-video" style="--rot: {{ rot }};"{% if video_src != blank %} data-video-src="{{ video_src }}"{% endif %} {{ block.shopify_attributes }}>
+            {% render 'advent-image', image: poster, sizes: '(min-width: 750px) 33vw, 74vw' %}
+            {%- if video_src != blank -%}
+              {%- assign play_label = 'products.product.media.play_video' | t -%}
+              <button type="button" class="adv-video__trigger" aria-label="{{ block.settings.label | default: play_label | escape }}">
+                <span class="adv-video__play" aria-hidden="true">{% render 'advent-icon', icon: 'play' %}</span>
+              </button>
+            {%- else -%}
+              <span class="adv-video__play" aria-hidden="true">{% render 'advent-icon', icon: 'play' %}</span>
+            {%- endif -%}
+            {%- if block.settings.label != blank -%}
+              <span class="adv-video__label">{{ block.settings.label }}</span>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+</advent-calendar>
+
+{% schema %}
+{
+  "name": "Advent: Videos",
+  "tag": "div",
+  "class": "section-advent-videos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "videos_heading",
+      "label": "Heading",
+      "default": "Lorem ipsum dolor sit"
+    },
+    {
+      "type": "textarea",
+      "id": "videos_text",
+      "label": "Text",
+      "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label (optional)",
+          "info": "Small tag on the video. Leave empty to hide."
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video (uploaded)"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Or video file URL (.mp4)"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Poster image",
+          "info": "Portrait 9:14."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advent: Videos",
+      "blocks": [
+        {
+          "type": "video",
+          "settings": {}
+        },
+        {
+          "type": "video",
+          "settings": {}
+        },
+        {
+          "type": "video",
+          "settings": {}
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

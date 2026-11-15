@@ -1,9 +1,19 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "advent-hero",
       "settings": {
-        "hero_bg": "#1F3A2C",
+        "hero_bg": "#1f3a2c",
+        "frame_color": "#a8192a",
         "top_decoration": "icicles",
         "hero_badge_1": "Limited edition",
         "hero_badge_2": "Advent 2026",
@@ -14,6 +24,8 @@
         "sold_out_label": "Sold out",
         "hero_cta_secondary": "Learn more",
         "hero_cta_secondary_link": "#product",
+        "hero_image": "shopify://shop_images/AdventCalenderLifestyle2-12.jpg",
+        "hero_image_2": "shopify://shop_images/AdventLifestyle1-5.jpg",
         "tag_label": "Inside",
         "tag_number": "1,200",
         "tag_script": "sheets of foil"
@@ -28,18 +40,24 @@
         "explainer_text": "A countdown to Christmas, one little door at a time. Classic calendars run December 1-24. Ours saves the magic for the final twelve days: December 13 to Christmas Eve.",
         "intro_cta": "Shop now",
         "intro_cta_link": "#product",
+        "intro_image_1": "shopify://shop_images/Advent-Box-Open.png",
         "intro_caption_1": "all twelve, tucked in",
-        "intro_caption_2": "under the tree"
+        "intro_image_2": "shopify://shop_images/AdventLifestyle1-3_1f9b0317-6aa7-4a19-ad57-7fc2d3a56a05.jpg",
+        "intro_caption_2": "under the tree",
+        "background_color": "#fff8f5",
+        "heading_color": "#1f3a2c",
+        "text_color": "#4a5d50",
+        "caption_color": "#1f3a2c",
+        "box_color": "#1f3a2c",
+        "box_title_color": "#f7f3ec",
+        "box_text_color": "#dce6dc",
+        "accent_color": "#a8192a",
+        "button_color": "#a8192a",
+        "button_text_color": "#ffffff"
       }
     },
     "inside": {
       "type": "advent-inside",
-      "settings": {
-        "eyebrow": "Open the box",
-        "heading": "What's Inside?",
-        "text": "<p>Twelve numbered drawers, one for each day from December 13 to Christmas Eve. Each one holds a surprise foil that’ll leave you feeling merry and bright.</p>",
-        "note": "Every calendar is packed with its own surprise mix of patterns."
-      },
       "blocks": {
         "fact_1": {
           "type": "fact",
@@ -67,40 +85,49 @@
         "fact_1",
         "fact_2",
         "fact_3"
-      ]
+      ],
+      "settings": {
+        "image": "shopify://shop_images/AdventLifestyle1-5.jpg",
+        "image_shape": "original",
+        "show_image_2": true,
+        "image_2": "shopify://shop_images/AdventLifestyle1-3_1f9b0317-6aa7-4a19-ad57-7fc2d3a56a05.jpg",
+        "image_2_shape": "original",
+        "eyebrow": "Open the box",
+        "heading": "What's Inside?",
+        "text": "<p>Twelve numbered drawers, one for each day from December 13 to Christmas Eve. Each one holds a surprise foil that’ll leave you feeling merry and bright.</p>",
+        "note": "Every calendar is packed with its own surprise mix of patterns.",
+        "background_color": "#fbe9e8",
+        "heading_color": "#1f3a2c",
+        "text_color": "#4a5d50",
+        "accent_color": "#a8192a",
+        "frame_color": "#ffffff"
+      }
     },
     "how": {
       "type": "advent-how",
-      "settings": {
-        "layout": "timeline",
-        "how_eyebrow": "Three merry steps",
-        "how_heading": "How It Works",
-        "how_text": "From your bag to your station: twelve days of holiday magic, one drawer at a time.",
-        "step_label": "Step"
-      },
       "blocks": {
         "step_1": {
           "type": "step",
           "settings": {
+            "icon": "step-bag",
             "title": "Order Your Calendar",
-            "body": "Add Twelve Days of Framar to your bag. It arrives wrapped in candy-cane stripes and a satin bow.",
-            "icon": "step-bag"
+            "body": "Add Twelve Days of Framar to your bag. It arrives wrapped in candy-cane stripes and a satin bow."
           }
         },
         "step_2": {
           "type": "step",
           "settings": {
+            "icon": "step-door",
             "title": "Open a Drawer Each Day",
-            "body": "Starting December 13, count down to Christmas by opening one numbered drawer each day.",
-            "icon": "step-door"
+            "body": "Starting December 13, count down to Christmas by opening one numbered drawer each day."
           }
         },
         "step_3": {
           "type": "step",
           "settings": {
+            "icon": "step-sparkle",
             "title": "Enjoy the Magic",
-            "body": "Discover the foil waiting in each drawer and spread some cheer, one fabulous foil at a time.",
-            "icon": "step-sparkle"
+            "body": "Discover the foil waiting in each drawer and spread some cheer, one fabulous foil at a time."
           }
         }
       },
@@ -108,30 +135,23 @@
         "step_1",
         "step_2",
         "step_3"
-      ]
+      ],
+      "settings": {
+        "layout": "timeline",
+        "how_eyebrow": "Three merry steps",
+        "how_heading": "How It Works",
+        "how_text": "From your bag to your station: twelve days of holiday magic, one drawer at a time.",
+        "step_label": "Step",
+        "background_color": "#f7f3ec",
+        "heading_color": "#1f3a2c",
+        "text_color": "#4a5d50",
+        "accent_color": "#a8192a",
+        "card_color": "#ffffff",
+        "icon_bg_color": "#fbe9e8"
+      }
     },
     "product": {
       "type": "advent-product",
-      "settings": {
-        "gallery_badge": "Limited edition",
-        "brand_label": "Framar",
-        "buy_subtitle": "Twelve Days of Framar",
-        "stock_label": "In stock",
-        "sold_out_label": "Sold out",
-        "fact_1_value": "12 days",
-        "fact_1_label": "of surprise foils",
-        "fact_2_value": "5x11 Pop Up",
-        "fact_2_label": "foil size",
-        "fact_3_value": "100 sheets",
-        "fact_3_label": "in every box",
-        "cart_label": "Add to bag",
-        "added_label": "Added to bag",
-        "ship_cutoff": "2026-12-10T17:00:00-05:00",
-        "ship_title": "Fast shipping!",
-        "ship_before": "Order within",
-        "ship_fallback": "the next few days",
-        "ship_after": "and it ships tomorrow, in time for door 1."
-      },
       "blocks": {
         "accordion_1": {
           "type": "accordion",
@@ -151,29 +171,56 @@
       "block_order": [
         "accordion_1",
         "accordion_2"
-      ]
+      ],
+      "settings": {
+        "gallery_badge": "Limited edition",
+        "brand_label": "Framar",
+        "buy_subtitle": "Twelve Days of Framar",
+        "stock_label": "In stock",
+        "sold_out_label": "Sold out",
+        "fact_1_icon": "step-calendar",
+        "fact_1_value": "12 days",
+        "fact_1_label": "of surprise foils",
+        "fact_2_icon": "step-gift",
+        "fact_2_value": "5x11 Pop Up",
+        "fact_2_label": "foil size",
+        "fact_3_icon": "step-sparkle",
+        "fact_3_value": "100 sheets",
+        "fact_3_label": "in every box",
+        "cart_label": "Add to bag",
+        "added_label": "Added to bag",
+        "ship_cutoff": "2026-12-10T17:00:00-05:00",
+        "ship_title": "Fast shipping!",
+        "ship_before": "Order within",
+        "ship_fallback": "the next few days",
+        "ship_after": "and it ships tomorrow, in time for door 1.",
+        "background_color": "#fffdf9",
+        "badge_color": "#a8192a",
+        "badge_text_color": "#ffffff",
+        "title_color": "#1f3a2c",
+        "accent_color": "#a8192a",
+        "text_color": "#4a5d50"
+      }
     },
     "reviews": {
       "type": "advent-reviews",
-      "settings": {
-        "reviews_eyebrow": "From the salon chair",
-        "reviews_heading": "Loved by stylists",
-        "reviews_text": "Real words from stylists who reach for Framar every day."
-      },
       "blocks": {
         "review_1": {
           "type": "review",
           "settings": {
+            "rating": 5,
             "quote": "i love framar because they’re a brand for the stylists and they make being a hairstylist much more fun.",
             "name": "Lisa Giles",
             "initials": "LG",
             "handle": "@lifeoflisag",
-            "url": "https://www.instagram.com/lifeoflisag"
+            "url": "https://www.instagram.com/lifeoflisag",
+            "featured": false
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
+            "rating": 5,
             "quote": "framar foils are the only ones I reach for, they’ve completely won me over. It’s a brand I believe in!!",
             "name": "Bailey Lavender",
             "initials": "BL",
@@ -185,11 +232,13 @@
         "review_3": {
           "type": "review",
           "settings": {
+            "rating": 5,
             "quote": "As a summer soul, I’m drawn to things that are bold, bright, and full of life. & that’s exactly what this brand is.",
             "name": "Marquie Covington",
             "initials": "MC",
             "handle": "@mirroredbymarquie",
-            "url": "https://www.instagram.com/mirroredbymarquie"
+            "url": "https://www.instagram.com/mirroredbymarquie",
+            "featured": false
           }
         }
       },
@@ -197,37 +246,63 @@
         "review_1",
         "review_2",
         "review_3"
-      ]
+      ],
+      "settings": {
+        "reviews_eyebrow": "From the salon chair",
+        "reviews_heading": "Loved by stylists",
+        "reviews_text": "Real words from stylists who reach for Framar every day.",
+        "show_stars": true,
+        "background_color": "#fff8f5",
+        "heading_color": "#1f3a2c",
+        "text_color": "#4a5d50",
+        "accent_color": "#a8192a",
+        "card_color": "#ffffff",
+        "highlight_color": "#fbe9e8",
+        "star_color": "#d9a46e"
+      }
     },
     "videos": {
       "type": "advent-videos",
-      "settings": {
-        "videos_heading": "See it in action",
-        "videos_text": "Real stylists, real unboxings. Tap a video to watch."
-      },
       "blocks": {
         "video_1": {
           "type": "video",
-          "settings": {}
+          "settings": {
+            "label": "",
+            "video": "shopify://files/videos/f49b935cdf394efe9641a83a92723353.HD-1080p-7.2Mbps-98257964.mp4",
+            "video_url": ""
+          }
         },
         "video_2": {
           "type": "video",
-          "settings": {}
+          "settings": {
+            "label": "",
+            "video": "shopify://files/videos/dfd0cd8e7f7c42b8a138ba95f1882d66.HD-1080p-7.2Mbps-98257960.mp4",
+            "video_url": ""
+          }
         },
         "video_3": {
           "type": "video",
-          "settings": {}
+          "settings": {
+            "label": "",
+            "video": "shopify://files/videos/88ea527efe2942b9919b98c0a09bab39.HD-1080p-7.2Mbps-98257962.mp4",
+            "video_url": ""
+          }
         }
       },
       "block_order": [
         "video_1",
         "video_2",
         "video_3"
-      ]
+      ],
+      "settings": {
+        "videos_heading": "See it in action",
+        "videos_text": "Real stylists, real unboxings. Tap a video to watch."
+      }
     },
     "tree": {
       "type": "advent-tree",
       "settings": {
+        "product": "",
         "placeholder_price": "$79.99",
         "tree_eyebrow": "Under the tree",
         "tree_heading": "The gift that keeps on foiling",

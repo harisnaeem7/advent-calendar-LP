@@ -563,7 +563,7 @@
 }
 .adv-buy__titles { display: flex; flex-direction: column; gap: 2px; }
 .adv-buy__vendor { font-size: 15px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--red); }
-.adv-buy__title { font-family: var(--font-script); font-weight: 400; font-size: clamp(40px, 4.2vw, 54px); line-height: 1.1; color: var(--forest); }
+.adv-buy__title { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: clamp(40px, 4.2vw, 54px); line-height: 1.1; color: var(--forest); }
 .adv-buy__subtitle { margin-top: 4px; font-family: var(--font-body); font-size: 18px; font-weight: 500; line-height: 1.4; letter-spacing: .02em; color: var(--red); }
 .adv-buy__sku { font-size: 13px; font-weight: 600; letter-spacing: .14em; color: #6B7A6F; margin-top: 8px; }
 .adv-buy__price-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }

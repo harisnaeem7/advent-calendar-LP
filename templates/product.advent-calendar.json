@@ -12,7 +12,7 @@
     "hero": {
       "type": "advent-hero",
       "settings": {
-        "hero_bg": "#152A1F",
+        "hero_bg": "#152a1f",
         "frame_color": "#a8192a",
         "top_decoration": "microlights",
         "hero_badge_1": "Limited edition",
@@ -48,7 +48,7 @@
         "heading_color": "#1f3a2c",
         "text_color": "#4a5d50",
         "caption_color": "#1f3a2c",
-        "box_color": "#152A1F",
+        "box_color": "#152a1f",
         "box_title_color": "#f7f3ec",
         "box_text_color": "#dce6dc",
         "accent_color": "#a8192a",
@@ -319,7 +319,14 @@
         "tree_ornament_1": "shopify://shop_images/AdventLifestyle1-3_1f9b0317-6aa7-4a19-ad57-7fc2d3a56a05.jpg",
         "tree_ornament_2": "shopify://shop_images/AdventCalenderLifestyle2-12_012af1d8-a443-4f08-b03c-0801cd08bb02.jpg",
         "tree_ornament_3": "shopify://shop_images/AdventCalenderLifestyle2-10.jpg",
-        "tree_ornament_4": "shopify://shop_images/AdventLifestyle1-5.jpg"
+        "tree_ornament_4": "shopify://shop_images/AdventLifestyle1-5.jpg",
+        "background_color": "#f7f3ec",
+        "pattern": "sparkles",
+        "pattern_color": "#A8192A",
+        "eyebrow_color": "#a8192a",
+        "heading_color": "#1f3a2c",
+        "text_color": "#4a5d50",
+        "line_color": "#e6dac6"
       }
     }
   },

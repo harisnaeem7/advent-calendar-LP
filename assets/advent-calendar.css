@@ -109,7 +109,6 @@
 }
 
 /* ----- backgrounds (images supplied by the section's style block) ----- */
-.adv-tree-soft { background-color: var(--blush); background-size: 160px 140px; }
 
 /* =====================================================================
    Motion (subtle; all off for reduced-motion users)
@@ -733,6 +732,11 @@
   font-size: 15px; line-height: 1.5; color: var(--muted);
 }
 .adv-tree__note svg { flex: 0 0 20px; }
+/* text colours from the section settings */
+.adv-tree__eyebrow { color: var(--tree-eyebrow, var(--red)); }
+.adv-tree__heading { color: var(--tree-heading, var(--forest)); }
+.adv-tree__text, .adv-tree__note { color: var(--tree-text, var(--muted)); }
+.adv-tree__note { border-color: var(--tree-line, var(--line)); }
 .adv-tree__art { flex: 1 1 520px; min-width: 0; max-width: 640px; margin: 0 auto; position: relative; aspect-ratio: 640 / 650; }
 .adv-tree__glow { position: absolute; left: 4%; right: 4%; top: 2%; bottom: 14%; border-radius: 50%; background: radial-gradient(closest-side, rgba(232, 176, 94, .32), rgba(232, 176, 94, 0)); }
 .adv-tree__img, .adv-tree__garland { position: absolute; left: 9%; top: 0; width: 82%; height: auto; display: block; }

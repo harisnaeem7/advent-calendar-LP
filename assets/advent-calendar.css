@@ -396,10 +396,7 @@
 /* =====================================================================
    WHAT'S INSIDE · photo of the open box + key facts
    ===================================================================== */
-.adv-inside {
-  background: var(--inside-bg, #FBE9E8);
-  border-top: 1px solid var(--inside-accent, var(--red)); border-bottom: 1px solid var(--inside-accent, var(--red));
-}
+.adv-inside { background: var(--inside-bg, #FBE9E8); }
 .adv-inside__grid { display: flex; flex-wrap: wrap; align-items: center; gap: 64px; }
 .adv-inside__media { position: relative; flex: 1 1 460px; min-width: 0; max-width: 560px; }
 .adv-inside__img {
@@ -533,7 +530,7 @@
 /* =====================================================================
    PRODUCT / BUY BOX
    ===================================================================== */
-.adv-product { background: var(--paper); border-top: 1px solid var(--line); }
+.adv-product { background: var(--paper); }
 .adv-product__grid { display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start; }
 .adv-gallery { flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
 .adv-gallery__main { position: relative; border-radius: 28px; overflow: hidden; background: var(--parchment); aspect-ratio: 4 / 5; }

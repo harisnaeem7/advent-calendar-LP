@@ -102,8 +102,8 @@
 .adv .adv-btn--red, .adv .adv-btn--red:hover {
   background: var(--red); color: #FFFFFF; border: 0;
 }
-.adv-btn--lg { padding: 18px 34px; font-size: 17px; box-shadow: 0 10px 24px rgba(168, 25, 42, .25); }
-.adv-btn--md { padding: 16px 30px; font-size: 16px; }
+.adv-btn--lg { padding: 14px 28px; font-size: 16px; box-shadow: 0 8px 18px rgba(168, 25, 42, .22); }
+.adv-btn--md { padding: 13px 26px; font-size: 15px; }
 .adv .adv-btn--ghost, .adv .adv-btn--ghost:hover {
   color: var(--cream); border: 1.5px solid var(--parchment); background: transparent;
 }
@@ -244,8 +244,8 @@
 }
 .adv-hero__text { font-size: 19px; line-height: 1.6; max-width: 520px; color: var(--sage-text); }
 .adv-hero__ctas { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-.adv-hero__ctas .adv-btn--red { padding: 14px 32px; font-size: 17px; box-shadow: 0 10px 24px rgba(0, 0, 0, .25); }
-.adv-hero__ctas .adv-btn--ghost { padding: 13px 26px; font-size: 17px; }
+.adv-hero__ctas .adv-btn--red { padding: 12px 26px; font-size: 16px; box-shadow: 0 8px 18px rgba(0, 0, 0, .22); }
+.adv-hero__ctas .adv-btn--ghost { padding: 10.5px 22px; font-size: 16px; }
 /* the hero's Add to bag is a real product form; let its button sit in the CTA row like a link */
 .adv-hero__cart { display: contents; }
 .adv-hero__ctas button.adv-btn { font-family: inherit; line-height: inherit; cursor: pointer; }
@@ -599,9 +599,9 @@
 .adv-buy__desc p { margin: 0; }
 
 .adv-form { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; margin: 0; }
-.adv-qty { display: flex; align-items: center; border: 1.5px solid #D8CBB6; border-radius: 999px; height: 58px; }
+.adv-qty { display: flex; align-items: center; border: 1.5px solid #D8CBB6; border-radius: 999px; height: 50px; }
 .adv-qty button {
-  width: 52px; height: 56px; border: 0; background: transparent; font-size: 22px; color: var(--ink); cursor: pointer;
+  width: 44px; height: 48px; border: 0; background: transparent; font-size: 20px; color: var(--ink); cursor: pointer;
 }
 .adv-qty input {
   width: 28px; min-width: 28px; border: 0; background: transparent; padding: 0;
@@ -610,8 +610,8 @@
 }
 .adv-qty input::-webkit-outer-spin-button, .adv-qty input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .adv-form__submit {
-  flex: 1 1 220px; height: 58px; border: 0; border-radius: 999px; background: var(--red); color: #FFFFFF;
-  font-size: 18px; font-weight: 600; cursor: pointer; box-shadow: 0 8px 20px rgba(168, 25, 42, .25);
+  flex: 1 1 220px; height: 50px; border: 0; border-radius: 999px; background: var(--red); color: #FFFFFF;
+  font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: 0 8px 20px rgba(168, 25, 42, .25);
   transition: transform .15s ease;
 }
 .adv-form__submit:hover { transform: translateY(-2px); }

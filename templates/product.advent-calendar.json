@@ -296,7 +296,9 @@
       ],
       "settings": {
         "videos_heading": "See it in action",
-        "videos_text": "Real stylists, real unboxings. Tap a video to watch."
+        "videos_text": "Real stylists, real unboxings. Tap a video to watch.",
+        "videos_eyebrow": "Watch it unbox",
+        "divider": "sparkle"
       }
     },
     "tree": {

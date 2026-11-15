@@ -1,5 +1,6 @@
 {%- comment -%}
   Advent: Videos · Twelve Days of Framar advent calendar.
+  Centred heading with an optional divider, then a row of tap-to-play videos (muted).
   Standalone section; shares assets/advent-calendar.css and .js with the other Advent sections.
 {%- endcomment -%}
 
@@ -12,13 +13,34 @@
   assign videos = section.blocks | where: 'type', 'video'
 -%}
 
+{% style %}
+  #shopify-section-{{ section.id }} .adv-videos {
+    --vid-bg: {{ section.settings.background_color | default: '#1F3A2C' }};
+    --vid-heading: {{ section.settings.heading_color | default: '#F7F3EC' }};
+    --vid-text: {{ section.settings.text_color | default: '#DCE6DC' }};
+    --vid-accent: {{ section.settings.accent_color | default: '#D9A46E' }};
+    --vid-frame: {{ section.settings.frame_color | default: '#F0E6DA' }};
+  }
+{% endstyle %}
+
 <advent-calendar class="adv">
 {%- if videos.size > 0 -%}
   <section id="videos" class="adv-section adv-videos">
     <div class="adv-wrap adv-videos__wrap">
       <div class="adv-videos__head">
-        <h2 class="adv-h2 adv-h2--light">{{ section.settings.videos_heading }}</h2>
-        <p class="adv-lede adv-lede--light">{{ section.settings.videos_text }}</p>
+        {%- if section.settings.videos_eyebrow != blank -%}
+          <span class="adv-eyebrow adv-videos__eyebrow">{{ section.settings.videos_eyebrow }}</span>
+        {%- endif -%}
+        <h2 class="adv-h2 adv-videos__heading">{{ section.settings.videos_heading }}</h2>
+        {%- case section.settings.divider -%}
+          {%- when 'sparkle' -%}
+            <span class="adv-videos__divider adv-videos__divider--sparkle" aria-hidden="true">{% render 'advent-icon', icon: 'sparkle', size: 14 %}</span>
+          {%- when 'line' -%}
+            <span class="adv-videos__divider" aria-hidden="true"></span>
+        {%- endcase -%}
+        {%- if section.settings.videos_text != blank -%}
+          <p class="adv-videos__text">{{ section.settings.videos_text }}</p>
+        {%- endif -%}
       </div>
       <div class="adv-videos__track">
         {%- for block in videos -%}
@@ -69,16 +91,82 @@
   "class": "section-advent-videos",
   "settings": [
     {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "videos_eyebrow",
+      "label": "Small heading",
+      "info": "Leave empty to hide.",
+      "default": "Lorem ipsum dolor"
+    },
+    {
       "type": "text",
       "id": "videos_heading",
       "label": "Heading",
       "default": "Lorem ipsum dolor sit"
     },
     {
+      "type": "select",
+      "id": "divider",
+      "label": "Divider under heading",
+      "default": "sparkle",
+      "options": [
+        {
+          "value": "sparkle",
+          "label": "Line with sparkle"
+        },
+        {
+          "value": "line",
+          "label": "Short line"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    },
+    {
       "type": "textarea",
       "id": "videos_text",
       "label": "Text",
-      "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed."
+      "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed.",
+      "info": "Leave empty to hide."
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#1F3A2C"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#F7F3EC"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#DCE6DC"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Small heading and divider",
+      "default": "#D9A46E"
+    },
+    {
+      "type": "color",
+      "id": "frame_color",
+      "label": "Video border",
+      "default": "#F0E6DA"
     }
   ],
   "blocks": [

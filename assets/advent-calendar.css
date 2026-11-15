@@ -679,14 +679,24 @@
 /* =====================================================================
    SEE IT IN ACTION · videos
    ===================================================================== */
-.adv-videos { background: var(--forest); padding-top: 104px; padding-bottom: 120px; }
+.adv-videos { background: var(--vid-bg, var(--forest)); padding-top: 96px; padding-bottom: 112px; }
 .adv-videos__wrap { display: flex; flex-direction: column; gap: 48px; }
-.adv-videos__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; }
-.adv-videos__head .adv-lede { max-width: 420px; }
+.adv-videos__head { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+.adv-videos__eyebrow { color: var(--vid-accent, var(--tan)); }
+.adv-videos__heading { color: var(--vid-heading, var(--cream)); }
+.adv-videos__text { max-width: 520px; margin: 0; font-size: 18px; line-height: 1.65; color: var(--vid-text, var(--sage-text)); }
+/* divider under the heading: a short line, or two lines with a sparkle between */
+.adv-videos__divider { display: block; width: 56px; height: 1px; margin: 2px 0 4px; background: var(--vid-accent, var(--tan)); }
+.adv-videos__divider--sparkle {
+  display: flex; align-items: center; gap: 12px; width: auto; height: auto; background: none; color: var(--vid-accent, var(--tan));
+}
+.adv-videos__divider--sparkle::before, .adv-videos__divider--sparkle::after {
+  content: ""; width: 48px; height: 1px; background: currentColor; opacity: .7;
+}
 .adv-videos__track { display: flex; flex-wrap: wrap; gap: 24px; }
 .adv-video {
   flex: 1 1 300px; min-width: 0; position: relative; aspect-ratio: 9 / 14;
-  border: 6px solid var(--parchment); border-radius: 26px; overflow: hidden; padding: 0;
+  border: 6px solid var(--vid-frame, var(--parchment)); border-radius: 26px; overflow: hidden; padding: 0;
   cursor: pointer; background: #000000; transform: rotate(var(--rot, 0deg));
 }
 .adv-video > img, .adv-video > video, .adv-video > .adv-placeholder { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }

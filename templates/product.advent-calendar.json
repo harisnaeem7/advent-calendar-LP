@@ -12,7 +12,7 @@
     "hero": {
       "type": "advent-hero",
       "settings": {
-        "hero_bg": "#1f3a2c",
+        "hero_bg": "#152A1F",
         "frame_color": "#a8192a",
         "top_decoration": "icicles",
         "hero_badge_1": "Limited edition",
@@ -48,7 +48,7 @@
         "heading_color": "#1f3a2c",
         "text_color": "#4a5d50",
         "caption_color": "#1f3a2c",
-        "box_color": "#1f3a2c",
+        "box_color": "#152A1F",
         "box_title_color": "#f7f3ec",
         "box_text_color": "#dce6dc",
         "accent_color": "#a8192a",
@@ -299,11 +299,11 @@
         "videos_heading": "See it in action",
         "divider": "sparkle",
         "videos_text": "Real stylists, real unboxings. Tap a video to watch.",
-        "background_color": "#FFFDF9",
-        "heading_color": "#A8192A",
-        "text_color": "#1F3A2C",
-        "accent_color": "#1F3A2C",
-        "frame_color": "#A8192A"
+        "background_color": "#fffdf9",
+        "heading_color": "#a8192a",
+        "text_color": "#1f3a2c",
+        "accent_color": "#1f3a2c",
+        "frame_color": "#a8192a"
       }
     },
     "tree": {

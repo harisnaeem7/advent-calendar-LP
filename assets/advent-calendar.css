@@ -698,7 +698,8 @@
 .adv-videos__track { display: flex; flex-wrap: wrap; gap: 24px; }
 .adv-video {
   flex: 1 1 300px; min-width: 0; position: relative; aspect-ratio: 9 / 14;
-  border: 6px solid var(--vid-frame, var(--parchment)); border-radius: 26px; overflow: hidden; padding: 0;
+  border: 6px solid var(--vid-frame, var(--parchment)); overflow: hidden; padding: 0;
+  border-radius: 999px 999px 22px 22px; /* arched window, like the hero photo */
   cursor: pointer; background: #000000; transform: rotate(var(--rot, 0deg));
 }
 .adv-video > img, .adv-video > video, .adv-video > .adv-placeholder { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -716,7 +717,7 @@
 }
 .adv-video__trigger {
   position: absolute; inset: 0; z-index: 1; width: 100%; padding: 0; border: 0;
-  background: transparent; cursor: pointer; border-radius: 20px;
+  background: transparent; cursor: pointer; border-radius: inherit;
 }
 .adv-video__trigger:focus-visible { outline: 3px solid var(--gold); outline-offset: -6px; }
 .adv-video.is-playing .adv-video__trigger, .adv-video.is-playing > img { display: none; }

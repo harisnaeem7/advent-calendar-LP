@@ -77,6 +77,11 @@
 .adv-wrap { max-width: 1320px; margin: 0 auto; }
 .adv-wrap--narrow { max-width: 1200px; margin: 0 auto; }
 .adv-section { padding-left: 32px; padding-right: 32px; position: relative; }
+/* one vertical rhythm for every section after the intro (smaller on tablet and phone) */
+.adv-inside, .adv-how, .adv-product, .adv-reviews, .adv-videos, .adv-tree { padding-top: var(--adv-space); padding-bottom: var(--adv-space); }
+.adv { --adv-space: 64px; }
+@media (max-width: 1093px) { .adv { --adv-space: 52px; } }
+@media (max-width: 700px) { .adv { --adv-space: 40px; } }
 /* shown by snippets/advent-image when no photo is picked yet */
 .adv-placeholder { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; background: #EFE7DD; fill: rgba(31, 58, 44, .25); }
 
@@ -392,7 +397,7 @@
    WHAT'S INSIDE · photo of the open box + key facts
    ===================================================================== */
 .adv-inside {
-  padding-top: 72px; padding-bottom: 80px; background: var(--inside-bg, #FBE9E8);
+  background: var(--inside-bg, #FBE9E8);
   border-top: 1px solid var(--inside-accent, var(--red)); border-bottom: 1px solid var(--inside-accent, var(--red));
 }
 .adv-inside__grid { display: flex; flex-wrap: wrap; align-items: center; gap: 64px; }
@@ -440,7 +445,7 @@
 /* =====================================================================
    HOW IT WORKS · icon cards linked by a dotted line
    ===================================================================== */
-.adv-how { padding-top: 80px; padding-bottom: 96px; background: var(--how-bg, var(--cream)); }
+.adv-how { background: var(--how-bg, var(--cream)); }
 .adv-how__head { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
 .adv-how__eyebrow { color: var(--how-accent, var(--red)); }
 .adv-how__heading { color: var(--how-heading, var(--forest)); }
@@ -528,7 +533,7 @@
 /* =====================================================================
    PRODUCT / BUY BOX
    ===================================================================== */
-.adv-product { background: var(--paper); padding-top: 96px; padding-bottom: 96px; border-top: 1px solid var(--line); }
+.adv-product { background: var(--paper); border-top: 1px solid var(--line); }
 .adv-product__grid { display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start; }
 .adv-gallery { flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
 .adv-gallery__main { position: relative; border-radius: 28px; overflow: hidden; background: var(--parchment); aspect-ratio: 4 / 5; }
@@ -631,7 +636,7 @@
 /* =====================================================================
    REVIEWS · Loved by stylists: simple cards, colours from section settings
    ===================================================================== */
-.adv-reviews { padding-top: 88px; padding-bottom: 96px; background: var(--rev-bg, #FFF8F5); }
+.adv-reviews { background: var(--rev-bg, #FFF8F5); }
 .adv-reviews__wrap { display: flex; flex-direction: column; gap: 48px; }
 .adv-reviews__eyebrow { color: var(--rev-accent, var(--red)); }
 .adv-reviews__heading { color: var(--rev-heading, var(--forest)); }
@@ -679,7 +684,7 @@
 /* =====================================================================
    SEE IT IN ACTION · videos
    ===================================================================== */
-.adv-videos { background: var(--vid-bg, var(--forest)); padding-top: 96px; padding-bottom: 112px; }
+.adv-videos { background: var(--vid-bg, var(--forest)); }
 .adv-videos__wrap { display: flex; flex-direction: column; gap: 48px; }
 .adv-videos__head { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
 .adv-videos__eyebrow { color: var(--vid-accent, var(--tan)); }
@@ -722,7 +727,7 @@
 /* =====================================================================
    UNDER THE TREE
    ===================================================================== */
-.adv-tree { position: relative; padding-top: 100px; padding-bottom: 150px; overflow: hidden; }
+.adv-tree { position: relative; overflow: hidden; }
 .adv-tree__grid { display: flex; flex-wrap: wrap; align-items: center; gap: 48px 64px; }
 .adv-tree__copy { flex: 1 1 380px; min-width: 0; max-width: 480px; display: flex; flex-direction: column; gap: 18px; }
 .adv-tree__note {
@@ -731,7 +736,7 @@
   font-size: 15px; line-height: 1.5; color: var(--muted);
 }
 .adv-tree__note svg { flex: 0 0 20px; }
-.adv-tree__art { flex: 1 1 520px; min-width: 0; max-width: 640px; margin: 0 auto; position: relative; aspect-ratio: 640 / 780; }
+.adv-tree__art { flex: 1 1 520px; min-width: 0; max-width: 640px; margin: 0 auto; position: relative; aspect-ratio: 640 / 650; }
 .adv-tree__glow { position: absolute; left: 4%; right: 4%; top: 2%; bottom: 14%; border-radius: 50%; background: radial-gradient(closest-side, rgba(232, 176, 94, .32), rgba(232, 176, 94, 0)); }
 .adv-tree__img, .adv-tree__garland { position: absolute; left: 9%; top: 0; width: 82%; height: auto; display: block; }
 .adv-tree__garland { overflow: visible; }
@@ -743,28 +748,8 @@
 .adv-ornament--2 { left: 52%; top: 38%; width: 12.3%; animation-delay: -2s; }
 .adv-ornament--3 { left: 32%; top: 48.5%; width: 13.1%; animation-delay: -4s; }
 .adv-ornament--4 { left: 54.9%; top: 53.8%; width: 13.1%; animation-delay: -1s; }
-.adv-tree__skirt {
-  position: absolute; left: 8%; right: 8%; top: 74%; height: 13%; border-radius: 50%;
-  background: var(--parchment); border: 3px solid var(--tan);
-  box-shadow: inset 0 0 0 10px var(--red), inset 0 0 0 13px var(--cream), 0 14px 24px rgba(31, 58, 44, .18);
-}
-.adv-tree__box { position: absolute; height: auto; border-radius: 3px; }
-.adv-tree__box--open { left: -3px; bottom: 26px; width: 29%; transform: rotate(-4deg); box-shadow: 0 14px 24px rgba(0, 0, 0, .25); z-index: 2; }
-.adv-tree__box--closed { left: 31%; bottom: 0; width: 38%; box-shadow: 0 18px 30px rgba(0, 0, 0, .28); z-index: 3; }
-.adv-foil-stack {
-  position: absolute; right: 4%; bottom: 3%; width: 23%; z-index: 2;
-  display: flex; flex-direction: column; align-items: center; transform: rotate(3deg);
-}
-.adv-foil-stack__box {
-  position: relative; height: 40px; margin-top: -2px; border-radius: 4px;
-  background: var(--bg); box-shadow: 0 6px 12px rgba(0, 0, 0, .22); overflow: hidden;
-}
-.adv-foil-stack__ring {
-  position: absolute; left: 8px; top: 5px; width: 28px; height: 28px; border-radius: 50%;
-  border: 5px solid var(--ring); display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-script); font-size: 15px; color: #FFFFFF;
-}
-.adv-foil-stack__brand { position: absolute; right: 8px; bottom: 4px; font-size: 10px; font-weight: 300; letter-spacing: .06em; color: #FFFFFF; }
+/* grass at the foot of the tree (colour from section settings) */
+.adv-tree__grass { position: absolute; left: 0; bottom: 0; width: 100%; height: 22%; color: #4F7F55; }
 
 /* =====================================================================
    Hero below 1094px: photos stack above the copy at a capped size
@@ -806,6 +791,13 @@
    Phones (≤700px)
    ===================================================================== */
 @media (max-width: 700px) {
+  /* under the tree: heading first, then the tree, then text and button */
+  .adv-tree__grid { gap: 16px; }
+  .adv-tree__copy { display: contents; }
+  .adv-tree__copy > * { flex: 1 1 100%; }
+  .adv-tree__eyebrow { order: -3; }
+  .adv-tree__heading { order: -2; }
+  .adv-tree__art { order: -1; flex: 1 1 100%; margin: 8px auto 12px; }
   .adv-section { padding-left: 16px; padding-right: 16px; }
 
   .adv-hero__inner { padding: 36px 16px 64px; gap: 20px; }
@@ -822,8 +814,6 @@
   .adv-hero__ctas .adv-btn { width: 100%; text-align: center; }
 
   .adv-intro { padding-top: 48px; padding-bottom: 80px; }
-  .adv-inside { padding-top: 48px; padding-bottom: 56px; }
-  .adv-how { padding-top: 56px; padding-bottom: 64px; }
   .adv-fact__value { font-size: 19px; }
   .adv-fact__label { font-size: 14px; }
   .adv-how__track { padding-left: 28px; gap: 40px; }
@@ -840,7 +830,6 @@
   .adv-polaroid__cap { font-size: 20px; }
 
 
-  .adv-reviews { padding-top: 64px; padding-bottom: 72px; }
   .adv-reviews__wrap { gap: 32px; }
   .adv-quotes { gap: 16px; }
   .adv-quote__inner { padding: 24px 22px 20px; }
@@ -853,7 +842,6 @@
   .adv-videos__track::-webkit-scrollbar { display: none; }
   .adv-video { flex: 0 0 74%; scroll-snap-align: center; }
 
-  .adv-foil-stack { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -63,21 +63,24 @@
           "type": "fact",
           "settings": {
             "value": "12",
-            "label": "pop-up foil boxes"
+            "label": "pop-up foil boxes",
+            "icon": "step-gift"
           }
         },
         "fact_2": {
           "type": "fact",
           "settings": {
             "value": "100",
-            "label": "sheets in every box"
+            "label": "sheets in every box",
+            "icon": "step-layers"
           }
         },
         "fact_3": {
           "type": "fact",
           "settings": {
             "value": "5x11",
-            "label": "foil size"
+            "label": "foil size",
+            "icon": "step-ruler"
           }
         }
       },

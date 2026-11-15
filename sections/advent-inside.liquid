@@ -52,7 +52,11 @@
         {%- if section.blocks.size > 0 -%}
           <ul class="adv-inside__facts">
             {%- for block in section.blocks -%}
-              <li class="adv-inside__fact" {{ block.shopify_attributes }}>
+              {%- assign fact_icon = block.settings.icon | default: 'none' -%}
+              <li class="adv-inside__fact{% if fact_icon != 'none' %} adv-inside__fact--icon{% endif %}" {{ block.shopify_attributes }}>
+                {%- if fact_icon != 'none' -%}
+                  <span class="adv-inside__fact-icon">{% render 'advent-icon', icon: fact_icon, size: 20 %}</span>
+                {%- endif -%}
                 <span class="adv-inside__fact-value">{{ block.settings.value }}</span>
                 <span class="adv-inside__fact-label">{{ block.settings.label }}</span>
               </li>
@@ -218,6 +222,50 @@
       "limit": 4,
       "settings": [
         {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "step-gift",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "step-gift",
+              "label": "Gift"
+            },
+            {
+              "value": "step-layers",
+              "label": "Stack of sheets"
+            },
+            {
+              "value": "step-ruler",
+              "label": "Ruler"
+            },
+            {
+              "value": "step-calendar",
+              "label": "Calendar"
+            },
+            {
+              "value": "step-door",
+              "label": "Drawer / door"
+            },
+            {
+              "value": "step-sparkle",
+              "label": "Sparkle"
+            },
+            {
+              "value": "step-bag",
+              "label": "Shopping bag"
+            },
+            {
+              "value": "step-truck",
+              "label": "Delivery truck"
+            }
+          ]
+        },
+        {
           "type": "text",
           "id": "value",
           "label": "Number or value",
@@ -240,21 +288,24 @@
           "type": "fact",
           "settings": {
             "value": "Lorem",
-            "label": "Lorem ipsum dolor"
+            "label": "Lorem ipsum dolor",
+            "icon": "step-gift"
           }
         },
         {
           "type": "fact",
           "settings": {
             "value": "Lorem",
-            "label": "Lorem ipsum dolor sit"
+            "label": "Lorem ipsum dolor sit",
+            "icon": "step-layers"
           }
         },
         {
           "type": "fact",
           "settings": {
             "value": "Lorem",
-            "label": "Lorem ipsum"
+            "label": "Lorem ipsum",
+            "icon": "step-ruler"
           }
         }
       ]

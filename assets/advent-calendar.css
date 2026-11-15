@@ -436,6 +436,13 @@
 }
 .adv-inside__fact-value { font-family: var(--font-display); font-size: 40px; font-weight: 600; line-height: 1; color: var(--inside-accent, var(--red)); }
 .adv-inside__fact-label { font-size: 14px; line-height: 1.4; color: var(--inside-text, var(--muted)); }
+/* optional icon in a soft circle, left of the number and label */
+.adv-inside__fact--icon { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: 12px; row-gap: 2px; }
+.adv-inside__fact-icon {
+  grid-row: span 2; width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--inside-accent, var(--red)) 9%, transparent); color: var(--inside-accent, var(--red));
+}
 .adv-inside__note { display: flex; align-items: flex-start; gap: 10px; max-width: 520px; font-size: 15px; line-height: 1.55; color: var(--inside-text, var(--muted)); }
 .adv-inside__note svg { flex: 0 0 16px; margin-top: 3px; color: var(--inside-accent, var(--red)); }
 
@@ -838,6 +845,9 @@
   .adv-inside__fact-value { font-size: 32px; }
   .adv-inside__fact { padding-right: 10px; }
   .adv-inside__fact + .adv-inside__fact { padding-left: 12px; }
+  /* phones: three narrow columns, so the icon sits above the number */
+  .adv-inside__fact--icon { grid-template-columns: 1fr; row-gap: 4px; }
+  .adv-inside__fact-icon { grid-row: auto; width: 34px; height: 34px; margin-bottom: 4px; }
   .adv-explainer { flex-direction: column; gap: 14px; padding: 22px 22px 24px; }
   .adv-intro__photos { height: calc(min(640px, 100vw - 32px) * .69 + 70px); }
   .adv-polaroid__cap { font-size: 20px; }

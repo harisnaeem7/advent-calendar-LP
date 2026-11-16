@@ -120,17 +120,17 @@
         "step_2": {
           "type": "step",
           "settings": {
-            "icon": "step-door",
-            "title": "Open a Drawer Each Day",
-            "body": "Starting December 13, count down to Christmas by opening one numbered drawer each day."
+            "icon": "step-gift",
+            "title": "Open a Box Each Day",
+            "body": "Starting December 13, count down to Christmas by opening one numbered box each day."
           }
         },
         "step_3": {
           "type": "step",
           "settings": {
             "icon": "step-sparkle",
-            "title": "Enjoy the Magic",
-            "body": "Discover the foil waiting in each drawer and spread some cheer, one fabulous foil at a time."
+            "title": "Foil Your Way to Christmas",
+            "body": "Discover a new holiday-patterned foil in every box and wrap up your holiday appointments in style."
           }
         }
       },

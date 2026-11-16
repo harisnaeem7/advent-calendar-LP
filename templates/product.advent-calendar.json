@@ -18,7 +18,7 @@
         "hero_badge_1": "Limited edition",
         "hero_badge_2": "Advent 2025",
         "hero_title": "Twelve Days of Framar",
-        "hero_text": "Twelve 5x11 pop-up foils with 100 festive sheets in every box. Open one a day from December 13 and reach drawer 12 on Christmas Eve.",
+        "hero_text": "Twelve holiday-patterned 5x11 pop-up foils with 100 festive sheets in every box. Open one a day from December 13 and reach box 12 on Christmas Eve.",
         "hero_cta": "Add to bag",
         "added_label": "Added to bag",
         "sold_out_label": "Sold out",
@@ -261,8 +261,7 @@
         "accent_color": "#a8192a",
         "card_color": "#fffdf9",
         "highlight_color": "#fbe9e8",
-        "star_color": "#d9a46e",
-        "divider": "sparkle"
+        "star_color": "#d9a46e"
       }
     },
     "videos": {

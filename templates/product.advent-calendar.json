@@ -159,15 +159,15 @@
         "accordion_1": {
           "type": "accordion",
           "settings": {
-            "title": "Why you need it",
-            "body": "<p>[Add copy: why stylists love this calendar]</p>"
+            "title": "Why You’ll Love It",
+            "body": "<ul><li><strong>12 Limited-Edition Foils: </strong>Twelve holiday-patterned pop-up foil boxes, with 100 festive 5x11\" sheets in each. They’re pre-cut and ready when you are, so there’s no prep needed.</li></ul><p></p><ul><li><strong>A Merrier Client Experience: </strong>Let your clients join the countdown. Have them pick their favorite festive pattern from the boxes you’ve opened so far, and make every holiday appointment truly dazzling.</li></ul><p></p><ul><li><strong>Embossed Texture: </strong>Prevents foils from slipping, so you can breeze through every service, even in the busiest season of the year.</li></ul><p></p><ul><li><strong>The Gift That Keeps on Foiling: </strong>Treat yourself or surprise a fellow stylist. It’s the ultimate way to sleigh the season in style. 🎄</li></ul>"
           }
         },
         "accordion_2": {
           "type": "accordion",
           "settings": {
             "title": "Shipping",
-            "body": "<p>[Add copy: shipping times and regions]</p>"
+            "body": "<p>Orders generally will ship within 1-2 business days from receipt, Monday-Friday.<br/><br/><a href=\"#\" title=\"#\"><strong>View Shipping Policy</strong></a></p>"
           }
         }
       },

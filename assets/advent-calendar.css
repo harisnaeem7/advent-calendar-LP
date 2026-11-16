@@ -79,8 +79,8 @@
 .adv-section { padding-left: 32px; padding-right: 32px; position: relative; }
 /* one vertical rhythm for every section after the intro (smaller on tablet and phone) */
 .adv-inside, .adv-how, .adv-product, .adv-reviews, .adv-videos, .adv-tree { padding-top: var(--adv-space); padding-bottom: var(--adv-space); }
-.adv { --adv-space: 64px; }
-@media (max-width: 1093px) { .adv { --adv-space: 52px; } }
+.adv { --adv-space: 44px; }
+@media (max-width: 1093px) { .adv { --adv-space: 36px; } }
 @media (max-width: 700px) { .adv { --adv-space: 28px; } }
 /* shown by snippets/advent-image when no photo is picked yet */
 .adv-placeholder { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; background: #EFE7DD; fill: rgba(31, 58, 44, .25); }
@@ -222,7 +222,7 @@
 .adv-hero__inner {
   position: relative; z-index: 4;
   max-width: 1320px; margin: 0 auto;
-  padding: 48px 32px 72px;
+  padding: 48px 32px 52px;
   display: flex; flex-wrap: wrap; align-items: center; gap: 56px;
   height: auto;
 }
@@ -358,7 +358,7 @@
 /* =====================================================================
    INTRO
    ===================================================================== */
-.adv-intro { padding-top: 64px; padding-bottom: 72px; }
+.adv-intro { padding-top: 48px; padding-bottom: 52px; }
 .adv-intro__grid { display: flex; flex-wrap: wrap; gap: 64px; align-items: center; }
 .adv-intro__copy { flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
 .adv-explainer {
@@ -422,6 +422,7 @@
 .adv-inside__copy { flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
 .adv-inside__eyebrow { color: var(--inside-accent, var(--red)); }
 .adv-inside__heading { color: var(--inside-heading, var(--forest)); }
+.adv .adv-inside__heading { margin-top: -10px; } /* small heading sits close above it */
 .adv-inside__text { max-width: 520px; font-size: 18px; line-height: 1.65; color: var(--inside-text, var(--muted)); }
 .adv-inside__text p { margin: 0 0 10px; }
 .adv-inside__text p:last-child { margin-bottom: 0; }
@@ -572,7 +573,7 @@
 .adv-buy__title { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: clamp(40px, 4.2vw, 54px); line-height: 1.1; color: var(--forest); }
 .adv-buy__subtitle { margin-top: 4px; font-family: var(--font-body); font-size: 18px; font-weight: 500; line-height: 1.4; letter-spacing: .02em; color: var(--red); }
 .adv-buy__sku { font-size: 13px; font-weight: 600; letter-spacing: .14em; color: #6B7A6F; margin-top: 8px; }
-.adv-buy__price-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.adv-buy__price-row { margin-bottom: -8px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .adv-buy__price { display: inline-flex; align-items: baseline; gap: 8px; font-size: 26px; font-weight: 600; line-height: 1; color: var(--ink); }
 .adv-buy__compare { font-size: 17px; font-weight: 400; color: var(--muted); }
 /* stock: small soft pill with a gently pulsing dot */
@@ -644,7 +645,7 @@
    REVIEWS · Loved by stylists: simple cards, colours from section settings
    ===================================================================== */
 .adv-reviews { background: var(--rev-bg, #FFF8F5); }
-.adv-reviews__wrap { display: flex; flex-direction: column; gap: 48px; }
+.adv-reviews__wrap { display: flex; flex-direction: column; gap: 36px; }
 .adv-reviews__eyebrow { color: var(--rev-accent, var(--red)); }
 .adv-reviews__heading { color: var(--rev-heading, var(--forest)); }
 .adv-reviews__text { max-width: 520px; font-size: 18px; line-height: 1.65; color: var(--rev-text, var(--muted)); }
@@ -693,7 +694,7 @@
    SEE IT IN ACTION · videos
    ===================================================================== */
 .adv-videos { background: var(--vid-bg, var(--forest)); }
-.adv-videos__wrap { display: flex; flex-direction: column; gap: 48px; }
+.adv-videos__wrap { display: flex; flex-direction: column; gap: 36px; }
 .adv-videos__head { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
 .adv-videos__eyebrow { color: var(--vid-accent, var(--tan)); }
 .adv-videos__heading { color: var(--vid-heading, var(--cream)); }
@@ -772,6 +773,7 @@
   .adv-inside__eyebrow { order: -3; }
   .adv-inside__heading { order: -2; }
   .adv-inside__eyebrow { margin-bottom: -12px; }
+  .adv .adv-inside__heading { margin-top: 0; }
   .adv-inside__media { order: -1; flex: 1 1 100%; max-width: 520px; margin: 8px auto 16px; }
   /* how it works · timeline: stack the heading over the steps */
   .adv-how--timeline .adv-how__wrap { grid-template-columns: 1fr; gap: 40px; }
@@ -783,7 +785,7 @@
   .adv-intro__copy > .adv-h2 { order: -2; }
   /* height follows the photo width (photos are sized in %), so they never spill into the text */
   .adv-intro__photos { order: -1; flex: 1 1 100%; max-width: 640px; height: calc(min(640px, 100vw - 64px) * .69 + 70px); margin: 8px auto 18px; }
-  .adv-hero__inner { padding: 48px 32px 64px; gap: 24px; }
+  .adv-hero__inner { padding: 48px 32px 44px; gap: 24px; }
   .adv-hero--lights .adv-hero__inner { padding-top: 84px; }
   .adv-hero--ornaments .adv-hero__inner { padding-top: 88px; }
   .adv-hero--microlights .adv-hero__inner { padding-top: 72px; }
@@ -861,7 +863,6 @@
   .adv-reviews__wrap { gap: 32px; }
   /* product: photos closer to the title block, less space under the price */
   .adv-product__grid { gap: 24px; }
-  .adv-buy__price-row { margin-bottom: -8px; }
   /* reviews: one swipeable row, next card peeking in from the right */
   .adv-quotes {
     display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 16px;

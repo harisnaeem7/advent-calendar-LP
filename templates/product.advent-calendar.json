@@ -35,9 +35,9 @@
       "type": "advent-intro",
       "settings": {
         "intro_heading": "Our Advent Calendar is here!",
-        "intro_text": "Get ready to sleigh the season with Framar’s 12 Days of Foils. Wrapped in candy-cane stripes and a pink satin bow, it’s as lovely on your station as it is under the tree. Untie the ribbon, open a numbered drawer each day, and find a little holiday magic inside.",
+        "intro_text": "Get ready to sleigh the season with Framar’s 12 Days of Foils. Wrapped in candy-cane stripes and a pink satin bow, it’s as lovely on your station as it is under the tree. Untie the ribbon, open a numbered box each day, and find a surprise patterned foil that’ll leave you feeling merry and bright.",
         "explainer_title": "What's an advent calendar?",
-        "explainer_text": "A countdown to Christmas, one little door at a time. Classic calendars run December 1-24. Ours saves the magic for the final twelve days: December 13 to Christmas Eve.",
+        "explainer_text": "A countdown to Christmas, one little door at a time. Classic calendars run December 1-24 but ours saves the magic for the final twelve days: December 13 to Christmas Eve.",
         "intro_cta": "Shop now",
         "intro_cta_link": "#product",
         "intro_image_1": "shopify://shop_images/Advent-Box-Open.png",

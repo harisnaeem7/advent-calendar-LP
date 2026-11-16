@@ -29,6 +29,12 @@
           <span class="adv-eyebrow adv-reviews__eyebrow">{{ section.settings.reviews_eyebrow }}</span>
         {%- endif -%}
         <h2 class="adv-h2 adv-reviews__heading">{{ section.settings.reviews_heading }}</h2>
+        {%- case section.settings.divider -%}
+          {%- when 'sparkle' -%}
+            <span class="adv-divider adv-divider--sparkle" aria-hidden="true">{% render 'advent-icon', icon: 'sparkle', size: 14 %}</span>
+          {%- when 'line' -%}
+            <span class="adv-divider" aria-hidden="true"></span>
+        {%- endcase -%}
         {%- if section.settings.reviews_text != blank -%}
           <p class="adv-reviews__text">{{ section.settings.reviews_text }}</p>
         {%- endif -%}
@@ -97,6 +103,26 @@
       "default": "Lorem ipsum dolor"
     },
     {
+      "type": "select",
+      "id": "divider",
+      "label": "Divider under heading",
+      "default": "sparkle",
+      "options": [
+        {
+          "value": "sparkle",
+          "label": "Line with sparkle"
+        },
+        {
+          "value": "line",
+          "label": "Short line"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    },
+    {
       "type": "textarea",
       "id": "reviews_text",
       "label": "Text",
@@ -133,7 +159,7 @@
     {
       "type": "color",
       "id": "accent_color",
-      "label": "Accent (small heading, borders, handles, initials)",
+      "label": "Accent (small heading, divider, borders, handles, initials)",
       "default": "#A8192A"
     },
     {

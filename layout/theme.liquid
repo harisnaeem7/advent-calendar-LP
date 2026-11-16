@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="">
+    <meta name="theme-color" content="{% if template.suffix == 'advent-calendar' %}#152A1F{% endif %}">
     <link rel="canonical" href="{{ canonical_url }}">
 
     {%- if settings.favicon != blank -%}
@@ -290,6 +290,9 @@
         .section-header { position: sticky; top: 0; height: 0; transform: none !important; }
         /* nothing to clear at the top any more, so sticky parts sit closer to it */
         .adv { --adv-sticky-top: 32px; }
+        /* Newer iPhone Safari colours its top bar from the page background, not the theme-color tag,
+           so the page behind the sections is the hero green too. */
+        html, body { background: #152A1F; }
       </style>
     {%- endif -%}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">

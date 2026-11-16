@@ -198,3 +198,71 @@ if (!window.advDragScroll) {
     document.addEventListener('pointerup', up);
   });
 }
+
+/* Slower, smoother scroll for on-page links in the Advent sections (e.g. "Learn more" -> #product).
+   The browser's own smooth scroll is quick; this eases over about a second. */
+if (!window.advSmoothLinks) {
+  window.advSmoothLinks = true;
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('.adv a[href^="#"]');
+    if (!link || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    const target = document.getElementById(decodeURIComponent(link.getAttribute('href').slice(1)));
+    if (!target) return;
+    e.preventDefault();
+    const endY = target.getBoundingClientRect().top + window.scrollY;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, endY);
+    } else {
+      const startY = window.scrollY;
+      const distance = endY - startY;
+      const duration = Math.min(1400, Math.max(700, Math.abs(distance) * 0.5));
+      const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+      const start = performance.now();
+      const html = document.documentElement;
+      const prevBehavior = html.style.scrollBehavior;
+      html.style.scrollBehavior = 'auto';
+      const step = (now) => {
+        const t = Math.min(1, (now - start) / duration);
+        window.scrollTo(0, startY + distance * ease(t));
+        if (t < 1) requestAnimationFrame(step);
+        else html.style.scrollBehavior = prevBehavior;
+      };
+      requestAnimationFrame(step);
+    }
+    history.replaceState(null, '', link.getAttribute('href'));
+  });
+}
+
+/* Product info tabs (<details>): smooth open and close instead of a jump. */
+if (!window.advSmoothDetails) {
+  window.advSmoothDetails = true;
+  document.addEventListener('click', (e) => {
+    const summary = e.target.closest('.adv-acc summary');
+    if (!summary) return;
+    const details = summary.parentElement;
+    const body = details.querySelector('.adv-acc__body');
+    if (!body || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    e.preventDefault();
+    if (details.classList.contains('is-animating')) return;
+    const opening = !details.open;
+    if (opening) details.open = true;
+    const full = body.scrollHeight;
+    const marginBottom = parseFloat(getComputedStyle(body).marginBottom) || 0;
+    details.classList.add('is-animating');
+    const frames = [
+      { height: '0px', marginBottom: '0px', opacity: 0 },
+      { height: full + 'px', marginBottom: marginBottom + 'px', opacity: 1 },
+    ];
+    const anim = body.animate(opening ? frames : frames.reverse(), { duration: 320, easing: 'cubic-bezier(.4, 0, .2, 1)', fill: 'forwards' });
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      if (!opening) details.open = false;
+      anim.cancel();
+      details.classList.remove('is-animating');
+    };
+    anim.onfinish = finish;
+    setTimeout(finish, 380); // safety net if the finish event is delayed (e.g. background tab)
+  });
+}

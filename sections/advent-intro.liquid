@@ -44,7 +44,7 @@
         </div>
       {%- endif -%}
       {%- if section.settings.intro_cta != blank -%}
-        <div><a href="{{ section.settings.intro_cta_link | default: '#product' }}" class="adv-btn adv-btn--red adv-btn--md">{{ section.settings.intro_cta }}</a></div>
+        <div class="adv-intro__cta"><a href="{{ section.settings.intro_cta_link | default: '#product' }}" class="adv-btn adv-btn--red adv-btn--md">{{ section.settings.intro_cta }}</a></div>
       {%- endif -%}
     </div>
 

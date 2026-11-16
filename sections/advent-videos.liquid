@@ -34,9 +34,9 @@
         <h2 class="adv-h2 adv-videos__heading">{{ section.settings.videos_heading }}</h2>
         {%- case section.settings.divider -%}
           {%- when 'sparkle' -%}
-            <span class="adv-videos__divider adv-videos__divider--sparkle" aria-hidden="true">{% render 'advent-icon', icon: 'sparkle', size: 14 %}</span>
+            <span class="adv-divider adv-divider--sparkle" aria-hidden="true">{% render 'advent-icon', icon: 'sparkle', size: 14 %}</span>
           {%- when 'line' -%}
-            <span class="adv-videos__divider" aria-hidden="true"></span>
+            <span class="adv-divider" aria-hidden="true"></span>
         {%- endcase -%}
         {%- if section.settings.videos_text != blank -%}
           <p class="adv-videos__text">{{ section.settings.videos_text }}</p>

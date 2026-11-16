@@ -81,7 +81,7 @@
 .adv-inside, .adv-how, .adv-product, .adv-reviews, .adv-videos, .adv-tree { padding-top: var(--adv-space); padding-bottom: var(--adv-space); }
 .adv { --adv-space: 64px; }
 @media (max-width: 1093px) { .adv { --adv-space: 52px; } }
-@media (max-width: 700px) { .adv { --adv-space: 40px; } }
+@media (max-width: 700px) { .adv { --adv-space: 28px; } }
 /* shown by snippets/advent-image when no photo is picked yet */
 .adv-placeholder { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; background: #EFE7DD; fill: rgba(31, 58, 44, .25); }
 
@@ -161,7 +161,7 @@
   background: var(--c); box-shadow: 0 0 14px 3px var(--g);
 }
 /* room under the lights so they don't crowd the badges */
-.adv-hero--lights .adv-hero__inner { padding-top: 96px; }
+.adv-hero--lights .adv-hero__inner { padding-top: 80px; }
 
 
 /* Hanging ornaments: a few baubles and stars on strings of different lengths
@@ -178,7 +178,7 @@
 }
 .adv-ornaments__item i { display: block; width: 1px; height: var(--len); background: #C9A27A; opacity: .8; }
 .adv-ornaments__item svg { display: block; margin-top: -1px; filter: drop-shadow(0 3px 4px rgba(0, 0, 0, .25)); }
-.adv-hero--ornaments .adv-hero__inner { padding-top: 96px; }
+.adv-hero--ornaments .adv-hero__inner { padding-top: 80px; }
 
 /* Micro lights: a fine copper wire in three loose swags with tiny warm twinkling dots
    (toggle: "Top decoration" → Micro lights) */
@@ -193,7 +193,7 @@
   0%, 100% { opacity: 1; }
   50%      { opacity: .35; box-shadow: 0 0 3px 1px rgba(255, 206, 120, .35); }
 }
-.adv-hero--microlights .adv-hero__inner { padding-top: 84px; }
+.adv-hero--microlights .adv-hero__inner { padding-top: 68px; }
 
 /* Icicle lights: short strands of tiny warm lights hanging from a fine line,
    each strand twinkling from top to bottom (toggle: "Top decoration" → Icicle lights) */
@@ -215,12 +215,12 @@
   20%      { opacity: .95; }
   45%      { opacity: .45; }
 }
-.adv-hero--icicles .adv-hero__inner { padding-top: 76px; }
+.adv-hero--icicles .adv-hero__inner { padding-top: 60px; }
 
 .adv-hero__inner {
   position: relative; z-index: 4;
   max-width: 1320px; margin: 0 auto;
-  padding: 64px 32px 96px;
+  padding: 48px 32px 72px;
   display: flex; flex-wrap: wrap; align-items: center; gap: 56px;
   height: auto;
 }
@@ -356,7 +356,7 @@
 /* =====================================================================
    INTRO
    ===================================================================== */
-.adv-intro { padding-top: 96px; padding-bottom: 120px; }
+.adv-intro { padding-top: 64px; padding-bottom: 72px; }
 .adv-intro__grid { display: flex; flex-wrap: wrap; gap: 64px; align-items: center; }
 .adv-intro__copy { flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
 .adv-explainer {
@@ -390,7 +390,7 @@
 .adv-hang--left .adv-polaroid img { object-position: center 62%; }
 .adv-polaroid__cap {
   position: absolute; left: 0; right: 0; bottom: 14px; text-align: center;
-  font-family: var(--font-script); font-size: 28px; color: var(--forest);
+  font-family: var(--font-script); font-size: 28px; font-weight: 700; color: var(--forest);
 }
 
 /* =====================================================================
@@ -437,7 +437,7 @@
 .adv-inside__fact-value { font-family: var(--font-display); font-size: 40px; font-weight: 600; line-height: 1; color: var(--inside-accent, var(--red)); }
 .adv-inside__fact-label { font-size: 14px; line-height: 1.4; color: var(--inside-text, var(--muted)); }
 /* optional icon in a soft circle, left of the number and label */
-.adv-inside__fact--icon { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: 12px; row-gap: 2px; }
+.adv-inside__fact--icon { display: grid; grid-template-columns: auto 1fr; align-items: center; align-content: start; column-gap: 12px; row-gap: 2px; }
 .adv-inside__fact-icon {
   grid-row: span 2; width: 40px; height: 40px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
@@ -636,6 +636,7 @@
 .adv-acc details[open] summary::after { content: "\2212"; }
 .adv-acc__body { margin: 0 0 18px; font-size: 16px; line-height: 1.6; color: var(--muted); }
 .adv-acc__body > * { margin: 0 0 8px; }
+.adv-acc details.is-animating .adv-acc__body { overflow: hidden; } /* height animated in advent-calendar.js */
 
 /* =====================================================================
    REVIEWS · Loved by stylists: simple cards, colours from section settings
@@ -645,6 +646,7 @@
 .adv-reviews__eyebrow { color: var(--rev-accent, var(--red)); }
 .adv-reviews__heading { color: var(--rev-heading, var(--forest)); }
 .adv-reviews__text { max-width: 520px; font-size: 18px; line-height: 1.65; color: var(--rev-text, var(--muted)); }
+.adv-reviews .adv-divider { color: var(--rev-accent, var(--red)); }
 
 .adv-quotes {
   list-style: none; margin: 0; padding: 0;
@@ -694,14 +696,12 @@
 .adv-videos__eyebrow { color: var(--vid-accent, var(--tan)); }
 .adv-videos__heading { color: var(--vid-heading, var(--cream)); }
 .adv-videos__text { max-width: 520px; margin: 0; font-size: 18px; line-height: 1.65; color: var(--vid-text, var(--sage-text)); }
-/* divider under the heading: a short line, or two lines with a sparkle between */
-.adv-videos__divider { display: block; width: 56px; height: 1px; margin: 2px 0 4px; background: var(--vid-accent, var(--tan)); }
-.adv-videos__divider--sparkle {
-  display: flex; align-items: center; gap: 12px; width: auto; height: auto; background: none; color: var(--vid-accent, var(--tan));
-}
-.adv-videos__divider--sparkle::before, .adv-videos__divider--sparkle::after {
-  content: ""; width: 48px; height: 1px; background: currentColor; opacity: .7;
-}
+/* divider under a heading (videos, reviews): a short line, or two lines with a sparkle between.
+   Colour comes from the section: see .adv-videos .adv-divider / .adv-reviews .adv-divider */
+.adv-divider { display: block; width: 56px; height: 1px; margin: 2px 0 4px; background: currentColor; }
+.adv-divider--sparkle { display: flex; align-items: center; gap: 12px; width: auto; height: auto; background: none; }
+.adv-divider--sparkle::before, .adv-divider--sparkle::after { content: ""; width: 48px; height: 1px; background: currentColor; opacity: .7; }
+.adv-videos .adv-divider { color: var(--vid-accent, var(--tan)); }
 .adv-videos__track { display: flex; flex-wrap: wrap; gap: 24px; }
 .adv-video {
   flex: 1 1 300px; min-width: 0; position: relative; aspect-ratio: 9 / 14;
@@ -710,7 +710,7 @@
   cursor: pointer; background: #000000; transform: rotate(var(--rot, 0deg));
 }
 .adv-video > img, .adv-video > video, .adv-video > .adv-placeholder { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.adv-video > img { opacity: .88; }
+.adv-video > img { opacity: .97; } /* barely-there shade so the play icon still reads */
 .adv-video__play {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   display: flex; color: #FFFFFF; pointer-events: none;
@@ -769,6 +769,7 @@
   .adv-inside__copy > * { flex: 1 1 100%; }
   .adv-inside__eyebrow { order: -3; }
   .adv-inside__heading { order: -2; }
+  .adv-inside__eyebrow { margin-bottom: -12px; }
   .adv-inside__media { order: -1; flex: 1 1 100%; max-width: 520px; margin: 8px auto 16px; }
   /* how it works · timeline: stack the heading over the steps */
   .adv-how--timeline .adv-how__wrap { grid-template-columns: 1fr; gap: 40px; }
@@ -780,7 +781,7 @@
   .adv-intro__copy > .adv-h2 { order: -2; }
   /* height follows the photo width (photos are sized in %), so they never spill into the text */
   .adv-intro__photos { order: -1; flex: 1 1 100%; max-width: 640px; height: calc(min(640px, 100vw - 64px) * .69 + 70px); margin: 8px auto 18px; }
-  .adv-hero__inner { padding: 48px 32px 80px; gap: 24px; }
+  .adv-hero__inner { padding: 48px 32px 64px; gap: 24px; }
   .adv-hero--lights .adv-hero__inner { padding-top: 84px; }
   .adv-hero--ornaments .adv-hero__inner { padding-top: 88px; }
   .adv-hero--microlights .adv-hero__inner { padding-top: 72px; }
@@ -808,7 +809,7 @@
   .adv-tree__art { order: -1; flex: 1 1 100%; margin: 8px auto 12px; }
   .adv-section { padding-left: 16px; padding-right: 16px; }
 
-  .adv-hero__inner { padding: 36px 16px 64px; gap: 20px; }
+  .adv-hero__inner { padding: 36px 16px 32px; gap: 20px; }
   .adv-hero__badges { gap: 8px; }
   .adv-pill { padding: 5.5px calc(10px - .16em) 4.5px 10px; font-size: 10px; }
   .adv-hero--lights .adv-hero__inner { padding-top: 72px; }
@@ -833,7 +834,7 @@
   .adv-qty input { font-size: 16px; }
   .adv-form__submit { flex-basis: 160px; height: 46px; font-size: 16px; box-shadow: 0 6px 14px rgba(168, 25, 42, .18); }
 
-  .adv-intro { padding-top: 48px; padding-bottom: 80px; }
+  .adv-intro { padding-top: 28px; padding-bottom: 28px; }
   .adv-fact__value { font-size: 19px; }
   .adv-fact__label { font-size: 14px; }
   .adv-how__track { padding-left: 28px; gap: 40px; }
@@ -848,12 +849,16 @@
   /* phones: three narrow columns, so the icon sits above the number */
   .adv-inside__fact--icon { grid-template-columns: 1fr; row-gap: 4px; }
   .adv-inside__fact-icon { grid-row: auto; width: 34px; height: 34px; margin-bottom: 4px; }
-  .adv-explainer { flex-direction: column; gap: 14px; padding: 22px 22px 24px; }
+  .adv-explainer { flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 22px 22px 24px; }
+  .adv-intro__cta { text-align: center; }
   .adv-intro__photos { height: calc(min(640px, 100vw - 32px) * .69 + 70px); }
   .adv-polaroid__cap { font-size: 20px; }
 
 
   .adv-reviews__wrap { gap: 32px; }
+  /* product: photos closer to the title block, less space under the price */
+  .adv-product__grid { gap: 24px; }
+  .adv-buy__price-row { margin-bottom: -8px; }
   /* reviews: one swipeable row, next card peeking in from the right */
   .adv-quotes {
     display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 16px;

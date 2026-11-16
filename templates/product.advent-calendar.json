@@ -16,7 +16,7 @@
         "frame_color": "#a8192a",
         "top_decoration": "microlights",
         "hero_badge_1": "Limited edition",
-        "hero_badge_2": "Advent 2026",
+        "hero_badge_2": "Advent 2025",
         "hero_title": "Twelve Days of Framar",
         "hero_text": "Twelve 5x11 pop-up foils with 100 festive sheets in every box. Open one a day from December 13 and reach drawer 12 on Christmas Eve.",
         "hero_cta": "Add to bag",
@@ -62,25 +62,25 @@
         "fact_1": {
           "type": "fact",
           "settings": {
+            "icon": "step-gift",
             "value": "12",
-            "label": "pop-up foil boxes",
-            "icon": "step-gift"
+            "label": "pop-up foil boxes"
           }
         },
         "fact_2": {
           "type": "fact",
           "settings": {
+            "icon": "step-layers",
             "value": "100",
-            "label": "sheets in every box",
-            "icon": "step-layers"
+            "label": "sheets in every box"
           }
         },
         "fact_3": {
           "type": "fact",
           "settings": {
+            "icon": "step-ruler",
             "value": "5x11",
-            "label": "foil size",
-            "icon": "step-ruler"
+            "label": "foil size"
           }
         }
       },
@@ -325,7 +325,7 @@
         "tree_ornament_4": "shopify://shop_images/AdventLifestyle1-5.jpg",
         "background_color": "#f7f3ec",
         "pattern": "sparkles",
-        "pattern_color": "#A8192A",
+        "pattern_color": "#a8192a",
         "eyebrow_color": "#a8192a",
         "heading_color": "#1f3a2c",
         "text_color": "#4a5d50",

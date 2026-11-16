@@ -98,7 +98,7 @@
         "eyebrow": "Open the box",
         "heading": "What's Inside?",
         "text": "<p>Twelve numbered drawers, one for each day from December 13 to Christmas Eve. Inside each one is a holiday-patterned pop-up foil to wrap up your appointments in style, one fabulous foil at a time.</p>",
-        "note": "Every calendar is packed with its own surprise mix of patterns.",
+        "note": "A new holiday pattern to unbox every day until Christmas.",
         "background_color": "#fffdf9",
         "heading_color": "#1f3a2c",
         "text_color": "#4a5d50",
@@ -253,6 +253,7 @@
       "settings": {
         "reviews_eyebrow": "From the salon chair",
         "reviews_heading": "Loved by stylists",
+        "divider": "sparkle",
         "reviews_text": "Real words from stylists who reach for Framar every day.",
         "show_stars": true,
         "background_color": "#fff8f5",

@@ -72,7 +72,24 @@
           <span>{{ section.settings.tree_note }}</span>
         </div>
       {%- endif -%}
-      <div><a href="#product" class="adv-btn adv-btn--red adv-btn--lg">{{ section.settings.tree_cta }} · {{ price_label }}</a></div>
+      <div class="adv-tree__ctas">
+        {%- comment -%} "Add to bag" adds the product to the cart (theme drawer / notification), like the hero. {%- endcomment -%}
+        {%- if adv_product != blank -%}
+          {%- form 'product', adv_product, class: 'adv-tree__cart', data-advent-cart: 'true', data-added-label: section.settings.added_label -%}
+            <input type="hidden" name="id" value="{{ variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="adv-btn adv-btn--red adv-btn--lg"{% unless variant.available %} disabled{% endunless %}>
+              <span data-cart-label>
+                {%- if variant.available -%}{{ section.settings.tree_cta }} · {{ price_label }}{%- else -%}{{ section.settings.sold_out_label }}{%- endif -%}
+              </span>
+            </button>
+            <p class="adv-form__error" role="alert" data-cart-error hidden></p>
+          {%- endform -%}
+        {%- endif -%}
+        {%- if section.settings.tree_cta_secondary != blank -%}
+          <a href="{{ section.settings.tree_cta_secondary_link | default: '#product' }}" class="adv-btn adv-btn--outline adv-btn--lg">{{ section.settings.tree_cta_secondary }}</a>
+        {%- endif -%}
+      </div>
     </div>
 
     <div class="adv-tree__art">
@@ -160,9 +177,35 @@
     {
       "type": "text",
       "id": "tree_cta",
-      "label": "Button label",
-      "info": "The price is added after it.",
+      "label": "Buy button label",
+      "info": "Adds the product to the cart. The price is added after the label.",
       "default": "Lorem ipsum dolor"
+    },
+    {
+      "type": "text",
+      "id": "added_label",
+      "label": "Added confirmation",
+      "default": "Added to bag"
+    },
+    {
+      "type": "text",
+      "id": "sold_out_label",
+      "label": "Sold-out label",
+      "default": "Sold out"
+    },
+    {
+      "type": "text",
+      "id": "tree_cta_secondary",
+      "label": "Second button label",
+      "info": "Leave empty to hide.",
+      "default": "Tell Me More"
+    },
+    {
+      "type": "text",
+      "id": "tree_cta_secondary_link",
+      "label": "Second button link",
+      "info": "#product scrolls to the Advent: Product section on this page.",
+      "default": "#product"
     },
     {
       "type": "header",

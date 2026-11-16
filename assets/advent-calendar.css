@@ -250,8 +250,23 @@
 .adv-hero__ctas .adv-btn--ghost { padding: 10.5px 22px; font-size: 16px; }
 /* the hero's Add to bag is a real product form; let its button sit in the CTA row like a link */
 .adv-hero__cart { display: contents; }
-.adv-hero__ctas button.adv-btn { font-family: inherit; line-height: inherit; cursor: pointer; }
-.adv-hero__ctas button.adv-btn[disabled] { cursor: default; transform: none; }
+.adv button.adv-btn { font-family: inherit; line-height: inherit; cursor: pointer; }
+.adv button.adv-btn[disabled] { cursor: default; transform: none; }
+/* "Add to bag" while the item is being added: the label fades out and a small spinner fades in;
+   when it's added, the spinner fades out and "Added to bag" fades in (classes set in advent-calendar.js) */
+.adv button.adv-btn, .adv-form__submit { position: relative; }
+.adv [data-cart-label] { display: inline-block; transition: opacity .25s ease, transform .25s ease; }
+.adv .is-loading [data-cart-label], .adv .is-swapping [data-cart-label] { opacity: 0; transform: translateY(3px); }
+.adv button:has(> [data-cart-label])::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 18px; height: 18px; margin: -9px 0 0 -9px;
+  border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%;
+  opacity: 0; scale: .6; pointer-events: none;
+  transition: opacity .2s ease, scale .2s ease;
+  animation: adv-spin .7s linear infinite paused; /* only turns while loading */
+}
+.adv button.is-loading:has(> [data-cart-label])::after { opacity: 1; scale: 1; animation-play-state: running; }
+.adv .is-loading, .adv .is-loading[disabled] { opacity: 1; cursor: progress; transform: none; }
+@keyframes adv-spin { to { transform: rotate(360deg); } }
 .adv-hero__ctas .adv-btn--soldout { opacity: .6; cursor: not-allowed; }
 .adv-hero__ctas .adv-form__error { flex: 1 1 100%; margin: 0; font-size: 15px; color: #F2C6C8; }
 .adv-hero--light .adv-hero__ctas .adv-form__error { color: var(--red); }
@@ -744,6 +759,14 @@
   font-size: 15px; line-height: 1.5; color: var(--muted);
 }
 .adv-tree__note svg { flex: 0 0 20px; }
+/* buttons: Add to bag (adds to cart) + an outline "Tell Me More" that scrolls to the product */
+.adv-tree__ctas { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.adv-tree__cart { margin: 0; }
+.adv-tree__ctas .adv-form__error { margin: 6px 0 0; font-size: 14px; color: var(--red); }
+.adv .adv-btn--outline, .adv .adv-btn--outline:hover {
+  color: var(--tree-heading, var(--forest)); border: 1.5px solid currentColor; background: transparent; box-shadow: none;
+}
+.adv-tree__ctas .adv-btn--outline { padding-top: 13px; padding-bottom: 13px; }
 /* text colours from the section settings */
 .adv-tree__eyebrow { color: var(--tree-eyebrow, var(--red)); }
 .adv-tree__heading { color: var(--tree-heading, var(--forest)); }
@@ -855,6 +878,11 @@
   .adv-inside__fact-icon { grid-row: auto; width: 34px; height: 34px; margin-bottom: 4px; }
   .adv-explainer { flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 22px 22px 24px; }
   .adv-intro__cta { text-align: center; }
+  .adv-tree__ctas { flex-wrap: nowrap; gap: 10px; }
+  .adv-tree__ctas .adv-btn, .adv-tree__cart { flex: 1 1 auto; }
+  .adv-tree__cart .adv-btn { width: 100%; }
+  .adv-tree__ctas .adv-btn { text-align: center; white-space: nowrap; padding-left: 18px; padding-right: 18px; }
+  .adv-tree__ctas .adv-btn--outline { padding-top: 11px; padding-bottom: 11px; }
   .adv-intro__cta .adv-btn { padding: 12px 18px; font-size: 15px; min-width: 207px; }
   .adv-intro__photos { height: calc(min(640px, 100vw - 32px) * .69 + 70px); }
   .adv-polaroid__cap { font-size: 20px; }

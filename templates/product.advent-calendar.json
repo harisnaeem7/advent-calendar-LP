@@ -330,7 +330,11 @@
         "eyebrow_color": "#a8192a",
         "heading_color": "#1f3a2c",
         "text_color": "#4a5d50",
-        "line_color": "#e6dac6"
+        "line_color": "#e6dac6",
+        "added_label": "Added to bag",
+        "sold_out_label": "Sold out",
+        "tree_cta_secondary": "Tell Me More",
+        "tree_cta_secondary_link": "#product"
       }
     }
   },

@@ -68,7 +68,11 @@ if (!customElements.get('advent-calendar')) {
         e.preventDefault();
         if (submit.disabled) return;
         const before = label.textContent;
+        // keep the button exactly the same size while its text changes
+        submit.style.width = `${submit.getBoundingClientRect().width}px`;
         submit.disabled = true;
+        submit.classList.add('is-loading'); // shows the spinner (CSS)
+        submit.setAttribute('aria-busy', 'true');
         if (error) error.hidden = true;
         try {
           const root = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
@@ -92,6 +96,8 @@ if (!customElements.get('advent-calendar')) {
           });
           const data = await res.json();
           if (!res.ok || data.status) throw new Error(data.description || data.message || window.cartStrings?.error);
+          submit.classList.remove('is-loading');
+          submit.removeAttribute('aria-busy');
           label.textContent = form.dataset.addedLabel;
           if (themeCart && data.sections) {
             cart.renderContents(data); // updates the drawer + cart count and opens the drawer
@@ -112,10 +118,22 @@ if (!customElements.get('advent-calendar')) {
           // other themes: let them refresh their cart bubble/drawer
           document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
           document.documentElement.dispatchEvent(new CustomEvent('cart:item-added', { bubbles: true, detail: data }));
-          setTimeout(() => { label.textContent = before; submit.disabled = false; }, 2200);
+          setTimeout(() => {
+            // fade "Added to bag" out, swap back to the original label, fade it in
+            submit.classList.add('is-swapping');
+            setTimeout(() => {
+              label.textContent = before;
+              submit.classList.remove('is-swapping');
+              submit.disabled = false;
+              submit.style.width = '';
+            }, 250);
+          }, 2200);
         } catch (err) {
+          submit.classList.remove('is-loading');
+          submit.removeAttribute('aria-busy');
           label.textContent = before;
           submit.disabled = false;
+          submit.style.width = '';
           if (error) { error.textContent = err.message; error.hidden = false; }
         }
       });

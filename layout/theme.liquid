@@ -282,6 +282,15 @@
 
     {%- if template.suffix == 'advent-calendar' -%}
       {% render 'advent-assets' %}
+      <style>
+        /* Advent landing page: no store header or footer.
+           The header section stays in the page (hidden) so the cart notification still opens after "Add to bag". */
+        .shopify-section-group-header-group:not(.section-header),
+        .section-header .header-wrapper { display: none; }
+        .section-header { position: sticky; top: 0; height: 0; transform: none !important; }
+        /* nothing to clear at the top any more, so sticky parts sit closer to it */
+        .adv { --adv-sticky-top: 32px; }
+      </style>
     {%- endif -%}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -346,7 +355,9 @@
       {{ content_for_layout }}
     </main>
 
-    {% sections 'footer-group' %}
+    {%- unless template.suffix == 'advent-calendar' -%}
+      {% sections 'footer-group' %}
+    {%- endunless -%}
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>

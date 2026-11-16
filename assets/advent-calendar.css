@@ -495,7 +495,7 @@
 .adv-how--timeline .adv-how__wrap {
   display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start;
 }
-.adv-how--timeline .adv-how__head { position: sticky; top: 120px; align-items: flex-start; text-align: left; }
+.adv-how--timeline .adv-how__head { position: sticky; top: calc(var(--adv-sticky-top, 100px) + 20px); align-items: flex-start; text-align: left; }
 .adv-how__track {
   position: relative; list-style: none; margin: 0; padding: 0 0 0 36px;
   display: flex; flex-direction: column; gap: 44px;
@@ -562,7 +562,7 @@
    sit side by side (from 1150px). overflow: clip on the wrapper lets sticky work. */
 @media (min-width: 1150px) {
   .adv:has(> .adv-product) { overflow: clip; }
-  .adv-gallery { position: sticky; top: 100px; }
+  .adv-gallery { position: sticky; top: var(--adv-sticky-top, 100px); }
   .adv-gallery__main { max-height: calc(100vh - 260px); }
 }
 .adv-buy__titles { display: flex; flex-direction: column; gap: 2px; }
